@@ -32,8 +32,8 @@ public class RestApplication {
 			http.csrf().disable()
 				.addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
 				.authorizeRequests()
-				.antMatchers(HttpMethod.POST, "/api/user/login").permitAll()
-				.antMatchers(HttpMethod.OPTIONS, "/api/user/login").permitAll()
+				.antMatchers(HttpMethod.POST, "/api/user/**").permitAll()
+				.antMatchers(HttpMethod.OPTIONS, "/api/user/**").permitAll()
 				.anyRequest().authenticated().and().csrf().disable();
 		}
 	}

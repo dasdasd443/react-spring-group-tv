@@ -31,6 +31,10 @@ public class User {
                 '}';
     }
 
+    public String toJSON(){
+        return "{\"id\":\""+id+"\",\"name\":\""+name+"\",\"username\":\""+username+"\",\"email\":\""+email+"\"}";
+    }
+
     public User(long id, String name, String username, String password, String email, String token) {
         this.id = id;
         this.name = name;

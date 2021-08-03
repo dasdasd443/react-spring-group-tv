@@ -1,6 +1,7 @@
 
 package com.rakuten.rest.Controller;
 
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,7 +49,7 @@ public class UserService {
 
         userRepository.save(user1);
 
-        return "Registered Successfully!";
+        return user1.toJSON();
     }
 
 
