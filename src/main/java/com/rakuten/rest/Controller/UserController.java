@@ -11,10 +11,10 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 import com.rakuten.rest.Model.User;
 import com.rakuten.rest.Repository.UserRepository;
+import com.rakuten.rest.Service.UserService;
 
 import java.sql.Date;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -57,7 +57,7 @@ public class UserController {
     public User loginUser(@RequestBody User user){
         String token = getJWTToken(user.getUsername());
         User loggedUser = new User();
-        loggedUser.setUsername(user.getUsername());
+        loggedUser.setEmail(user.getEmail());
         loggedUser.setToken(token);
         return loggedUser;
     }

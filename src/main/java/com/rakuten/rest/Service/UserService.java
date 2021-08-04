@@ -1,7 +1,6 @@
 
-package com.rakuten.rest.Controller;
+package com.rakuten.rest.Service;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
