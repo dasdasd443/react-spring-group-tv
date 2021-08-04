@@ -1,0 +1,46 @@
+.navigation {
+  height: 5vh;
+  background-color: #F6F7F8;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 0 15vh 0;
+}
+
+.navigation__links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.navigation__links a {
+  color: #33A0FF;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.navigation__links > * {
+  font-weight: 600;
+  padding-right: 15px;
+}
+
+.page9-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 3rem;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+/*# sourceMappingURL=store.css.map */

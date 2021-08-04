@@ -1,0 +1,96 @@
+.page11{
+    font-weight:300!important;
+    .items-list{
+        &__item{
+            height:20vh;
+            place-items: center;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            &--name{
+                flex: 6 !important;;
+                display:flex;
+                place-items: center;
+                span{
+                    font-size:12px;
+                    line-height: 1.6;
+                }
+                span:nth-child(3){
+                    text-align:left;
+                }
+                .image-container{
+                    height:100px;
+                    width:150px;
+                    display:flex;
+                    justify-content: center;
+                    place-items: center;
+                    img{
+                        max-height:70%;
+                        max-width:70%;
+                    }
+                }
+                &__delete{
+                    position: relative;
+                    display: flex;
+                    place-items: center;
+                    color:#FF4252;
+                    svg{
+                        position:relative;
+                        left:5px;
+                    }
+                    .background{
+                        position: absolute;
+                        background-color:#FF6875;
+                        height:20px;
+                        width: 20px;
+                        left:0;
+                        opacity: .05;
+                        border-radius: 23px;
+                    }
+                    
+                }
+                &__delete:hover{
+                    color:#FF6875;
+                    opacity: 1;
+                    .background:hover{
+                        opacity:.5;
+                        background-color:#FF4252;
+                    }
+                }
+            }
+            span,&--quantity{
+                flex:2;
+                font-size:16px;
+            }
+            &--quantity{
+                
+                form{
+                    position: relative;
+                    display:flex;
+                    input[type=number],input[type=number]:focus{
+                        outline:none;
+                        border:none;
+                        padding:15px;
+                        background-color: #F6F7F8;
+                        text-align: center;
+                        width:50px;
+                    }
+                    input[type=number]::-webkit-inner-spin-button{
+                        display:none;
+                    }
+                    button{
+                        width:50px;
+                        background-color: #F6F7F8;
+                        border: none;
+                        outline: none;
+                        color:#33A0FF;
+                    }
+                    button:hover{
+                        color:white;
+                        background-color:#33A0FF;
+                    }
+                }
+            }
+        }
+    }
+}

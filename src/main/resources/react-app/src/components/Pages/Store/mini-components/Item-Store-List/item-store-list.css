@@ -1,0 +1,119 @@
+.items-container {
+  width: 70%;
+  margin-left: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 4rem;
+}
+
+.items-container-menus {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2rem;
+}
+
+.items-container-menusettings {
+  background-color: #fbf9f9;
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: -30px;
+  padding: 10px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.items-container-menusettings--left--items {
+  margin-right: 30px;
+}
+
+.items-container-menusettings--left--sort {
+  margin-right: 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.items-container-menusettings--left--selectNames {
+  padding: 5px;
+  width: 100px;
+  margin-right: 30px;
+  border: 1px solid #f0ecec;
+  background-color: transparent;
+}
+
+.items-container-menusettings--left--selectNames:focus {
+  outline: none;
+}
+
+.items-container-menusettings--left--show {
+  margin-right: 10px;
+}
+
+.items-container-menusettings--left--number {
+  padding: 5px;
+  width: 100px;
+  border: 1px solid #f0ecec;
+  background-color: transparent;
+}
+
+.items-container-menusettings--left--number:focus {
+  outline: none;
+}
+
+.items-container-menusettings--icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.items-container-menusettings--icons i {
+  margin-left: 10px;
+  font-size: 15pt;
+  color: lightgray;
+}
+
+.items-container-menusettings--icons i:hover {
+  color: #33A0FF;
+}
+
+.items-container-menuNumbers {
+  background-color: #fbf9f9;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 90px;
+}
+
+.items-container-menuNumbers a {
+  text-decoration: none;
+  color: #04042e;
+  margin: 0 8px;
+  padding: 15px 23px;
+  font-weight: bolder;
+}
+
+.items-container-menuNumbers a:hover {
+  color: white;
+  background-color: #04042e;
+}
+/*# sourceMappingURL=item-store-list.css.map */

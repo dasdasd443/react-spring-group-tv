@@ -1,0 +1,116 @@
+.banner-2 {
+  height: 600px;
+  background-color: #2E90E5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 10vh 0;
+  color: white;
+}
+
+.banner-2__flag {
+  width: 70vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 3rem;
+}
+
+.banner-2__flag__text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 4rem;
+  width: 40%;
+}
+
+.banner-2__flag__text span {
+  font-size: 66px;
+  font-weight: 100;
+  line-height: 1.6;
+}
+
+.banner-2__flag__text span:nth-child(2) {
+  font-size: 24px;
+}
+
+.banner-2__flag__text a {
+  color: white;
+  text-decoration: none;
+  width: 90px;
+  padding-bottom: 10px;
+}
+
+.banner-2__flag__text a:hover {
+  margin-bottom: -3px;
+  border-bottom: 3px solid white;
+}
+
+.banner-2__flag__pic {
+  overflow: hidden;
+  height: 630px;
+  position: relative;
+  top: -15px;
+}
+
+.banner-2__flag__pic img {
+  max-width: 100%;
+  height: 709px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media screen and (max-width: 1100px) {
+  .banner-2__flag {
+    width: 100%;
+    padding: 50px;
+  }
+  .banner-2__flag__pic {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .banner-2__flag {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    position: relative;
+  }
+  .banner-2__flag__text {
+    z-index: 1;
+    width: 100%;
+    text-shadow: 0 0 1px black;
+  }
+  .banner-2__flag__pic {
+    z-index: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    top: -30px;
+    position: absolute;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .banner-2__flag__pic {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=banner-2.css.map */

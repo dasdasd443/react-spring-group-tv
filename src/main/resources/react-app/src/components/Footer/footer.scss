@@ -1,0 +1,138 @@
+
+.foot{
+    &-sec1{
+        display: flex;
+        justify-content: space-between;
+        padding: 40px 0;
+        h5{
+            font-size: 18px;
+        }
+        p{
+            line-height: 1.6;
+            color:#262626;
+        }
+        &-fticons{
+            display: flex;
+        
+            &-fb{
+                margin-right: 40px;
+                color: #385c8e;
+            }
+            &-twit{
+                color: #03a9f4;
+            }
+        }
+        &-rakuinfo{
+            // border: 1px solid red;
+            width: 30%;
+        
+            &-h3{
+                color:#bdbdbd;
+                font-weight: bolder;
+                font-size:32px;
+            }
+            &-p{
+                margin: 25px 0;
+            }
+        
+        }
+        &-follow{
+            // border: 1px solid blue;
+            width: 30%;
+            padding: 16px 0;
+            &-h5{
+                font-weight: bolder;
+            }
+            &-p{
+                margin: 14px 0 30px 0;
+            }
+        }
+        &-contact{
+            // border: 1px solid green;
+            width: 30%;
+            padding: 16px 0;
+            &-h5{
+                font-weight: bolder;
+            }
+            &-p{
+                margin: 12px 0;
+        
+                span{
+                    display: block
+                };
+            }
+        
+        }
+    }
+    
+    &-sec2{
+        display: flex;
+        justify-content: space-between;
+        padding: 40px 0;
+        h5{
+            margin-bottom: 30px;
+            font-weight: bolder;
+            font-size:18px;
+        }
+        p{
+            line-height:2.5;
+        }
+        &-information{
+            
+        }
+        &-services{
+            
+        }
+        &-extras{
+            
+        }
+        &-myaccount{
+            
+        }
+        &-usefullinks{
+           
+        }
+        &-ouroffers{
+            
+        }
+    
+    }
+    &-sec3{
+        margin: 20px 0 20px auto;
+        display: flex;
+        justify-content: space-between;
+    
+        &-copyright{
+            color: #d9dee1;
+        }
+       &-paymentIcon{
+        gap: 20px;
+        display: flex;
+       }
+    }
+}
+
+@media screen and(max-width:736px) {
+    .foot-sec2{
+        display:flex;
+        gap:1rem;
+        p{
+            display:none;
+        }
+    }
+}
+
+@media screen and(max-width:600px) {
+    .foot-sec1{
+        p{
+            display:none;
+        }
+    }
+    .foot-sec2{
+        flex-wrap: wrap;
+    }
+    .foot-sec3{
+        display:flex;
+        flex-wrap:wrap;
+    }
+}

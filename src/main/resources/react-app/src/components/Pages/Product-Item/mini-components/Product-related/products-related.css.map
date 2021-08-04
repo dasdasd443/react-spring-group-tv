@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,iBAAiB,CAAA;EACb,MAAM,EAAE,OAAO;CAQlB;;AANI,AAAD,uBAAO,CAAA;EACH,UAAU,EAAE,MAAM;EAClB,WAAW,EAAI,IAAI;EACnB,cAAc,EAAE,KAAK;EACrB,aAAa,EAAE,IAAI;CACtB",
+    "sources": [
+        "products-related.scss"
+    ],
+    "names": [],
+    "file": "products-related.css"
+}

@@ -1,0 +1,128 @@
+.page11 {
+  font-weight: 300 !important;
+}
+
+.page11 .items-list__item {
+  height: 20vh;
+  place-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.page11 .items-list__item--name {
+  -webkit-box-flex: 6 !important;
+      -ms-flex: 6 !important;
+          flex: 6 !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  place-items: center;
+}
+
+.page11 .items-list__item--name span {
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.page11 .items-list__item--name span:nth-child(3) {
+  text-align: left;
+}
+
+.page11 .items-list__item--name .image-container {
+  height: 100px;
+  width: 150px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  place-items: center;
+}
+
+.page11 .items-list__item--name .image-container img {
+  max-height: 70%;
+  max-width: 70%;
+}
+
+.page11 .items-list__item--name__delete {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  place-items: center;
+  color: #FF4252;
+}
+
+.page11 .items-list__item--name__delete svg {
+  position: relative;
+  left: 5px;
+}
+
+.page11 .items-list__item--name__delete .background {
+  position: absolute;
+  background-color: #FF6875;
+  height: 20px;
+  width: 20px;
+  left: 0;
+  opacity: .05;
+  border-radius: 23px;
+}
+
+.page11 .items-list__item--name__delete:hover {
+  color: #FF6875;
+  opacity: 1;
+}
+
+.page11 .items-list__item--name__delete:hover .background:hover {
+  opacity: .5;
+  background-color: #FF4252;
+}
+
+.page11 .items-list__item span, .page11 .items-list__item--quantity {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  font-size: 16px;
+}
+
+.page11 .items-list__item--quantity form {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.page11 .items-list__item--quantity form input[type=number], .page11 .items-list__item--quantity form input[type=number]:focus {
+  outline: none;
+  border: none;
+  padding: 15px;
+  background-color: #F6F7F8;
+  text-align: center;
+  width: 50px;
+}
+
+.page11 .items-list__item--quantity form input[type=number]::-webkit-inner-spin-button {
+  display: none;
+}
+
+.page11 .items-list__item--quantity form button {
+  width: 50px;
+  background-color: #F6F7F8;
+  border: none;
+  outline: none;
+  color: #33A0FF;
+}
+
+.page11 .items-list__item--quantity form button:hover {
+  color: white;
+  background-color: #33A0FF;
+}
+/*# sourceMappingURL=item-list.css.map */

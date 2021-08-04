@@ -1,0 +1,93 @@
+.banner-2{
+    height:600px;
+    background-color: #2E90E5;
+    display: flex;
+    justify-content: center;
+    margin:10vh 0;
+    
+    &__flag{
+        width:70vw;
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        gap:3rem;
+        &__text{
+            display:flex;
+            flex-direction: column;
+            gap:4rem;
+            width:40%;
+            span{
+                font-size:66px;
+                font-weight:100;
+                line-height: 1.6;
+                
+            }
+            span:nth-child(2){
+                font-size:24px;
+            }
+            a{
+                color:white;
+                text-decoration: none;
+                width:90px;
+                padding-bottom: 10px;
+            }
+            a:hover{
+                margin-bottom:-3px;
+                border-bottom: 3px solid white;
+            }
+        }
+        &__pic{
+            overflow:hidden;
+            height:630px;
+            position: relative;
+            top:-15px;
+            img{
+                max-width:100%;
+                height: 709px;
+                object-fit: cover;
+            }
+            
+        }
+    }
+    color:white;
+}
+@media screen and (max-width:1100px) {
+    .banner-2{
+        &__flag{
+            width:100%;
+            padding:50px;
+            &__pic{
+                width:100%;
+            }
+        }
+    }
+}
+@media screen and (max-width:770px) {
+    .banner-2{
+        &__flag{
+            justify-content: center;
+            position:relative;
+            &__text{
+                z-index:1;
+                width:100%;
+                text-shadow: 0 0 1px black;
+            }
+            &__pic{
+                z-index:0;
+                display:flex;
+                top:-30px;
+                position:absolute;
+                justify-content: center;
+            }
+        }
+    }
+}
+@media screen and (max-width:650px) {
+    .banner-2{
+        &__flag{
+            &__pic{
+                width:100%;
+            }
+        }
+    }
+}

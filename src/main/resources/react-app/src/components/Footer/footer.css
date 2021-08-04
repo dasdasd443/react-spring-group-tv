@@ -1,0 +1,148 @@
+.foot-sec1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 40px 0;
+}
+
+.foot-sec1 h5 {
+  font-size: 18px;
+}
+
+.foot-sec1 p {
+  line-height: 1.6;
+  color: #262626;
+}
+
+.foot-sec1-fticons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.foot-sec1-fticons-fb {
+  margin-right: 40px;
+  color: #385c8e;
+}
+
+.foot-sec1-fticons-twit {
+  color: #03a9f4;
+}
+
+.foot-sec1-rakuinfo {
+  width: 30%;
+}
+
+.foot-sec1-rakuinfo-h3 {
+  color: #bdbdbd;
+  font-weight: bolder;
+  font-size: 32px;
+}
+
+.foot-sec1-rakuinfo-p {
+  margin: 25px 0;
+}
+
+.foot-sec1-follow {
+  width: 30%;
+  padding: 16px 0;
+}
+
+.foot-sec1-follow-h5 {
+  font-weight: bolder;
+}
+
+.foot-sec1-follow-p {
+  margin: 14px 0 30px 0;
+}
+
+.foot-sec1-contact {
+  width: 30%;
+  padding: 16px 0;
+}
+
+.foot-sec1-contact-h5 {
+  font-weight: bolder;
+}
+
+.foot-sec1-contact-p {
+  margin: 12px 0;
+}
+
+.foot-sec1-contact-p span {
+  display: block;
+}
+
+.foot-sec2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 40px 0;
+}
+
+.foot-sec2 h5 {
+  margin-bottom: 30px;
+  font-weight: bolder;
+  font-size: 18px;
+}
+
+.foot-sec2 p {
+  line-height: 2.5;
+}
+
+.foot-sec3 {
+  margin: 20px 0 20px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.foot-sec3-copyright {
+  color: #d9dee1;
+}
+
+.foot-sec3-paymentIcon {
+  gap: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (max-width: 736px) {
+  .foot-sec2 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 1rem;
+  }
+  .foot-sec2 p {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .foot-sec1 p {
+    display: none;
+  }
+  .foot-sec2 {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .foot-sec3 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+/*# sourceMappingURL=footer.css.map */

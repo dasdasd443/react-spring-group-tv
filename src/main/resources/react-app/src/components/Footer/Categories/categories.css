@@ -1,0 +1,129 @@
+.others-category-freefundsupport {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 60px 0;
+  width: 100%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.others-category-freefundsupport--box {
+  width: 330px;
+  height: auto;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.others-category-freefundsupport--box--i {
+  color: #f76774;
+  font-size: 30pt;
+}
+
+.others-category-freefundsupport--box--h3 {
+  font-weight: bolder;
+  margin: 20px 0;
+}
+
+.others-category-freefundsupport--box--p {
+  font-size: 10pt;
+  line-height: 1.6;
+}
+
+.others-category-latestnews {
+  margin: 90px 0;
+}
+
+.others-category-latestnews-h2 {
+  text-align: center;
+  font-weight: bolder;
+}
+
+.others-category-latestnews--boxes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 30px 0;
+  gap: 1rem;
+}
+
+.others-category-latestnews--box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 330px;
+  height: 126px;
+}
+
+.others-category-latestnews--box--featured3Img {
+  margin-left: -26px;
+}
+
+.others-category-latestnews--box--content {
+  margin: 24px 10px;
+}
+
+.others-category-latestnews--box--content--date {
+  font-size: 10pt;
+  color: lightgray;
+}
+
+.others-category-latestnews--box--content--h5 {
+  font-weight: bolder;
+  margin: 10px 0;
+}
+
+.others-category-latestnews--box--content--text {
+  line-height: 1.2;
+  font-size: 10pt;
+}
+
+.input-search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 150px 0;
+}
+
+.input-search--inputs {
+  background-color: transparent;
+  border: 1px solid lightgray;
+  width: 500px;
+  padding-left: 20px;
+  margin-right: 10px;
+}
+
+.input-search--inputs:focus {
+  outline: none;
+}
+
+.input-search--butn {
+  background-color: #2e90e5;
+  color: white;
+  border: none;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border-radius: 3px;
+  padding: 25px 40px;
+}
+
+.input-search--butn:focus {
+  outline: none;
+}
+/*# sourceMappingURL=categories.css.map */
