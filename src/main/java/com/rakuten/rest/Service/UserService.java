@@ -1,7 +1,6 @@
 
-package com.rakuten.rest.Controller;
+package com.rakuten.rest.Service;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,9 +25,12 @@ public class UserService {
     public User userData() {
         return new User(
                 "Victor Chiong",
-                "victor",
                 "12345678",
-                "cjvicro@gmail.com"
+                "cjvicro@gmail.com",
+                "asdasd",
+                "q",
+                "ADM",
+                "092956363"
         );
     }
     public List<User> userList(){
@@ -42,9 +44,13 @@ public class UserService {
     public String registerUser(User user){
         User user1 = new User(
                 user.getName(),
-                user.getUsername(),
                 user.getPassword(),
-                user.getEmail()
+                user.getEmail(),
+                user.getBilling_address(),
+                user.getShipping_address(),
+                user.getRole(),
+                user.getPhone()
+                
         );
 
         userRepository.save(user1);

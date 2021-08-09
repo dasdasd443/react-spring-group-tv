@@ -11,6 +11,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 import com.rakuten.rest.Model.User;
 import com.rakuten.rest.Repository.UserRepository;
+import com.rakuten.rest.Service.UserService;
 
 import java.sql.Date;
 import java.util.List;
@@ -36,9 +37,12 @@ public class UserController {
     public User hello(){
         return new User(
                 "Victor Chiong",
-                "victor",
                 "12345678",
-                "cjvicro@gmail.com"
+                "cjvicro@gmail.com",
+                "",
+                "",
+                "ADM",
+                "092512354"
         );
     }
 
@@ -54,12 +58,16 @@ public class UserController {
 
     @PostMapping("/login")
     // @RequestBody User user
-    public User loginUser(@RequestBody User user){
-        String token = getJWTToken(user.getUsername());
-        User loggedUser = new User();
-        loggedUser.setUsername(user.getUsername());
-        loggedUser.setToken(token);
-        return loggedUser;
+    public String signInUser(@RequestBody User user){
+        String token="";
+        if(token==""){
+            if(userService.loginUser(user).isPresent()){
+                token = getJWTToken(user.getEmail());
+            }else{
+                token= "bleh";
+            }
+        }
+        return token;
     }
 
     private String getJWTToken(String username) {

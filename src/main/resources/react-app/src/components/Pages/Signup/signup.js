@@ -32,7 +32,11 @@ const Signup = () => {
                 name,
                 email,
                 password,
-                username: " "
+                username: " ",
+                billing_address: " ",
+                shipping_address: " ",
+                role: "CUS",
+                phone: "09123456"
             })
             }
         ).then(res => res.json());

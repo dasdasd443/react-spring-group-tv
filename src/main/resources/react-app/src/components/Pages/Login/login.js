@@ -24,7 +24,13 @@ const Login = () => {
                 password,
                 username:"blahblah"
             })
-        }).then(res => res.text());
+        }).then(res => res.text())
+        .then(res => {
+            localStorage.setItem('user', JSON.stringify({
+                login:true,
+                token: res
+            }))
+        })
         
         console.log(response);
     })
