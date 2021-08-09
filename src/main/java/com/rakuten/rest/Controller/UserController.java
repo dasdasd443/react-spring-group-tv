@@ -64,7 +64,7 @@ public class UserController {
             if(userService.loginUser(user).isPresent()){
                 token = getJWTToken(user.getEmail());
             }else{
-                token= "bleh";
+                token= "";
             }
         }
         return token;
