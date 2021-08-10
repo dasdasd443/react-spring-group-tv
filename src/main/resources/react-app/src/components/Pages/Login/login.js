@@ -9,9 +9,8 @@ let images = new Image();
 const Login = () => {
     const dispatch = useDispatch();
 
-    const [user,setUser] = useState(useSelector(state => state.user));
+    const [user,setUser] = useState(false);
 
-    console.log(user);
     const LoginUser = useCallback(async function LoginUser(e){
         e.preventDefault();
         document.querySelectorAll(".error").forEach((elem,index) => {
@@ -29,16 +28,17 @@ const Login = () => {
             body: JSON.stringify({
                 email,
                 password,
-                username:"blahblah"
             })
-        }).then(res => res.text())
+        }).then(res => res.json())
         .then(res => {
-            if(res !== ''){
+            if(res.token !== 'not found'){
                 localStorage.setItem('user', JSON.stringify({
                     login:true,
-                    token: res
+                    token: res.token,
+                    details: res.user
                 }))
                 dispatch(userLogin({email}))
+                setUser({email})
             }
             
         })
@@ -51,6 +51,7 @@ const Login = () => {
     return (
         
         <section style={LoginCSS}>
+            {(user!==false)? <Redirect to="/"/>: null}
             <section className="login-container--background"></section>
                 <section className="container-background" style={Background}>
                 </section>

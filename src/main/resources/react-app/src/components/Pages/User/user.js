@@ -8,10 +8,8 @@ import Newsletter from '../../Content/Newsletter/newsletter';
 import Banner2 from '../../Content/Banner2/banner-2';
 import Categories from '../../Footer/Categories/categories';
 import { useSelector } from 'react-redux';
-import IndexCSS from './index.css';
-import { useCallback, useEffect } from 'react';
 
-const Index = () => {
+const User = () => {
     const newsletterDisplay = useSelector( state => state.newsletter);
     const newsletterelem = (newsletterDisplay === 1)?"":<Newsletter classsName="newsletter"/>;
     
@@ -21,25 +19,17 @@ const Index = () => {
         }
     }).then(res => console.log(res.text()));
     return (
-            <div className = "container" style={IndexCSS}>
+            <div className = "container">
                 {newsletterelem}
                 <div className="App">
                 <Header/>
                 <span className="line-title"></span>
-                <Title/>
-                <Links/>
                 </div>
-                <Banner/>
                 <div className = "App">
-                <BestSellers/>
-                </div>
-                <Banner2/>
-                <div className = "App">
-                    <Categories/>
                     <Footer/>
                 </div>
             </div>
     );
 }
 
-export default Index;
+export default User;

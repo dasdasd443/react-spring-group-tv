@@ -33,7 +33,7 @@ public class RestApplication {
 				.addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
 				.authorizeRequests()
 				.antMatchers(HttpMethod.POST, "/api/user/**").permitAll()
-				.antMatchers(HttpMethod.OPTIONS, "/api/user/**").permitAll()
+				.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 				.anyRequest().authenticated().and().csrf().disable();
 		}
 	}

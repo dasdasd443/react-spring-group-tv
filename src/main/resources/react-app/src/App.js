@@ -9,6 +9,7 @@ import Store from './components/Pages/Store/store';
 import ProductItem from './components/Pages/Product-Item/product-item';
 import {Route, BrowserRouter as Router,Switch} from 'react-router-dom';
 import {useState,useEffect} from 'react';
+import User from './components/Pages/User/user';
 
 function App() {
   const [newsletterDisplay, setNewsletterDisplay] = useState(0);
@@ -20,6 +21,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={Index}/>
         <Route path="/product" component = {ProductsPage}/>
+        <Route path="/user" component={User}/>
         <Route path="/login" component = {Login}/>
         <Route path="/signup" component={Signup}/>
         <Route path="/checkout" component={Checkout}/>

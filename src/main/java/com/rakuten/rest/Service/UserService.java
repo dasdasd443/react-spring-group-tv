@@ -55,7 +55,7 @@ public class UserService {
 
         userRepository.save(user1);
 
-        return user1.toJSON();
+        return user1.toString();
     }
 
 
