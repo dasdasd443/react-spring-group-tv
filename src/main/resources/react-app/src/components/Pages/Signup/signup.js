@@ -7,7 +7,7 @@ import { useCallback, useState } from 'react';
 let images = new Images();
 
 const Signup = () => {
-    const [loggedUser,setLoggedUser] = useState((localStorage.getItem('user')!== undefined)? JSON.parse(localStorage.getItem('user')).detail :false);
+    const [loggedUser,setLoggedUser] = useState((localStorage.getItem('user')!== null)? JSON.parse(localStorage.getItem('user')).detail :false);
     const ShowPassword = useCallback(() => {
         let password = document.querySelector("#password");
         let icon = document.querySelector("i");

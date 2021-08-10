@@ -10,8 +10,6 @@ import Categories from '../../Footer/Categories/categories';
 import { useSelector } from 'react-redux';
 
 const User = () => {
-    const newsletterDisplay = useSelector( state => state.newsletter);
-    const newsletterelem = (newsletterDisplay === 1)?"":<Newsletter classsName="newsletter"/>;
     
     fetch('http://localhost:5000/',{
         headers:{
@@ -20,7 +18,6 @@ const User = () => {
     }).then(res => console.log(res.text()));
     return (
             <div className = "container">
-                {newsletterelem}
                 <div className="App">
                 <Header/>
                 <span className="line-title"></span>
