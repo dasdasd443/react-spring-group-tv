@@ -322,7 +322,7 @@
   color: red;
 }
 
-.input-group:nth-child(4) {
+.input-group:nth-child(4), .input-group:nth-child(5) {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -335,7 +335,7 @@
           align-items: center;
 }
 
-.input-group:nth-child(4) input[type=checkbox] {
+.input-group:nth-child(4) input[type=checkbox], .input-group:nth-child(5) input[type=checkbox] {
   width: 20px;
   height: 20px;
 }

@@ -53,7 +53,16 @@ public class UserController {
 
     @PostMapping("/register")
     public String registerUser(@RequestBody User user){
-        return userService.registerUser(user);
+        String user_obj = userService.registerUser(user);
+        String token="";
+        if(token==""){
+            if(userService.loginUser(user).isPresent()){
+                token = getJWTToken(user.getEmail());
+            }else{
+                token= "not found";
+            }
+        }
+        return "{\"token\":\""+token+"\",\"user\":"+user_obj+"}";
     }
 
     @PostMapping("/login")
@@ -64,10 +73,10 @@ public class UserController {
             if(userService.loginUser(user).isPresent()){
                 token = getJWTToken(user.getEmail());
             }else{
-                token= "bleh";
+                token= "not found";
             }
         }
-        return token;
+        return "{\"token\":\""+token+"\",\"user\":"+userService.loginUser(user).get().toString()+"}";
     }
 
     private String getJWTToken(String username) {

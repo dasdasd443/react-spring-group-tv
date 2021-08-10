@@ -1,10 +1,16 @@
 import LoginCSS from './login.css';
 import Image from '../../exportFiles/exportImages';
-import {Link} from 'react-router-dom';
-import { useCallback } from 'react';
+import {Link, Redirect} from 'react-router-dom';
+import { useCallback, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Header from '../../Header/header';
+import {userLogin} from '../../../store/action/user-action';
 let images = new Image();
 const Login = () => {
+    const dispatch = useDispatch();
+
+    const [user,setUser] = useState(false);
+
     const LoginUser = useCallback(async function LoginUser(e){
         e.preventDefault();
         document.querySelectorAll(".error").forEach((elem,index) => {
@@ -22,24 +28,30 @@ const Login = () => {
             body: JSON.stringify({
                 email,
                 password,
-                username:"blahblah"
             })
-        }).then(res => res.text())
+        }).then(res => res.json())
         .then(res => {
-            localStorage.setItem('user', JSON.stringify({
-                login:true,
-                token: res
-            }))
+            if(res.token !== 'not found'){
+                localStorage.setItem('user', JSON.stringify({
+                    login:true,
+                    token: res.token,
+                    details: res.user
+                }))
+                dispatch(userLogin({email}))
+                setUser({email})
+            }
+            
         })
         
-        console.log(response);
     })
 
     const Background = {
         backgroundImage: `url(${images.Background()})`
     }
     return (
+        
         <section style={LoginCSS}>
+            {(user!==false)? <Redirect to="/"/>: null}
             <section className="login-container--background"></section>
                 <section className="container-background" style={Background}>
                 </section>

@@ -25,17 +25,9 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        return "{\"id\":\""+id+"\",\"name\":\""+name+"\",\"email\":\""+email+"\",\"billing_address\":\""+billing_address+"\",\"shipping_address\":\""+shipping_address+"\",\"role\":\""+role+"\",\"phone\":\""+phone+"\"}";
     }
 
-    public String toJSON(){
-        return "{\"id\":\""+id+"\",\"name\":\""+name+"\",\"email\":\""+email+"\"}";
-    }
 
     
 

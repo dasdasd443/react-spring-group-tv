@@ -1,12 +1,13 @@
 import SignupCSS from './signup.css';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faEye} from '@fortawesome/free-solid-svg-icons';
 import Images from '../../exportFiles/exportImages';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 let images = new Images();
 
 const Signup = () => {
+    const [loggedUser,setLoggedUser] = useState((localStorage.getItem('user')!== undefined)? JSON.parse(localStorage.getItem('user')).detail :false);
     const ShowPassword = useCallback(() => {
         let password = document.querySelector("#password");
         let icon = document.querySelector("i");
@@ -24,6 +25,7 @@ const Signup = () => {
         const email = document.querySelector("#email").value;
         const password = document.querySelector("#password").value;
         const name = document.querySelector("#fullname").value;
+        const seller = document.querySelector("#seller").checked;
         const response = await fetch('http://localhost:5000/api/user/register/',
             {mode:'cors',
             method:'POST',
@@ -35,12 +37,25 @@ const Signup = () => {
                 username: " ",
                 billing_address: " ",
                 shipping_address: " ",
-                role: "CUS",
-                phone: "09123456"
+                role: (seller)? "SLR": "CUS",
+                phone: " "
             })
             }
-        ).then(res => res.json());
-        console.log(response);
+        ).then(res => res.json())
+        .then(res => {
+            if(res!==null){
+                localStorage.setItem('user', JSON.stringify({
+                    login:true,
+                    token: res.token,
+                    details: res.user
+                }))
+                setLoggedUser({
+                    login:true,
+                    token: res.token,
+                    details: res.user
+                })
+            }
+        });
     });
 
     const Background = {
@@ -48,6 +63,7 @@ const Signup = () => {
     }
     return (
         <section style={SignupCSS}>
+            {(loggedUser)? <Redirect to="/"/>: null}
             <section className="login-container--background"></section>
             <section className="container-background" style={Background}>
             </section>
@@ -88,8 +104,12 @@ const Signup = () => {
                                         
                                 </div>
                                 <div className='input-group'>
-                                    <input type="checkbox" id="email"/>
-                                    <label htmlFor="email">Signup for email updates</label>
+                                    <input type="checkbox" id="seller"/>
+                                    <label htmlFor="seller">Signup as Seller</label>
+                                </div>
+                                <div className='input-group'>
+                                    <input type="checkbox" id="updates"/>
+                                    <label htmlFor="updates">Signup for email updates</label>
                                 </div>
                                 <input type="submit" value="SIGN UP" onClick={SignupUser}/>
                                 
