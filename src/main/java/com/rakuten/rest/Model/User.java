@@ -18,6 +18,7 @@ public class User {
     private @Column(name="shipping_address", length=100) String shipping_address;
     private @Column(name="role", length=3) String role;
     private @Column(name="phone",length=11) String phone;
+    private @Column(name="seller_name", unique=true, length=11) String seller_name;
     private String token;
 
     public User() {
@@ -25,27 +26,28 @@ public class User {
 
     @Override
     public String toString() {
-        return "{\"id\":\""+id+"\",\"name\":\""+name+"\",\"email\":\""+email+"\",\"billing_address\":\""+billing_address+"\",\"shipping_address\":\""+shipping_address+"\",\"role\":\""+role+"\",\"phone\":\""+phone+"\"}";
+        return "{\"id\":\""+id+"\",\"name\":\""+name+"\",\"email\":\""+email+"\",\"billing_address\":\""+billing_address+"\",\"shipping_address\":\""+shipping_address+"\",\"role\":\""+role+"\",\"phone\":\""+phone+"\",\"seller_name\":\""+seller_name+"\"}";
     }
 
 
     
 
-    public User(long id, String name, String password, String email, String role, String phone,
-            String token) {
+    public User(long id, String name, String password, String email, String role, String phone, 
+                String seller_name, String token) {
         this.id = id;
         this.name = name;
         this.password = password;
         this.email = email;
         this.role = role;
         this.phone = phone;
+        this.seller_name = seller_name;
         this.token = token;
     }
 
     
 
     public User(String name, String password, String email, String billing_address, String shipping_address,
-            String role, String phone) {
+                String seller_name, String role, String phone) {
         this.name = name;
         this.password = password;
         this.email = email;
@@ -53,6 +55,7 @@ public class User {
         this.shipping_address = shipping_address;
         this.role = role;
         this.phone = phone;
+        this.seller_name = seller_name;
     }
 
     public long getId() {
@@ -121,6 +124,14 @@ public class User {
 
     public void setShipping_address(String shipping_address) {
         this.shipping_address = shipping_address;
+    }
+
+    public String getSeller_name() {
+        return seller_name;
+    }
+
+    public void setSeller_name(String seller_name) {
+        this.seller_name = seller_name;
     }
 
     

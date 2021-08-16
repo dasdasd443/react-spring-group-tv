@@ -1,0 +1,27 @@
+.content-header{
+    width:100%;
+    padding:20px 0;
+    font-size:30px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    span{
+        font-weight: bold;
+    }
+    &__icons{
+        display:flex;
+        gap:1rem;
+        font-size:20px;
+        div{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            padding:10px;
+            border-radius: 25px;
+        }
+    }
+}
+.content-container{
+    display:flex;
+    gap:1rem;
+}

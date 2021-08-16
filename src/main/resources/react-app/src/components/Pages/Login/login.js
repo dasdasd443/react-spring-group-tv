@@ -31,14 +31,16 @@ const Login = () => {
             })
         }).then(res => res.json())
         .then(res => {
-            if(res.token !== 'not found'){
-                localStorage.setItem('user', JSON.stringify({
-                    login:true,
-                    token: res.token,
-                    details: res.user
-                }))
-                dispatch(userLogin({email}))
-                setUser({email})
+            if(!res.status){
+                if(res != undefined){
+                    localStorage.setItem('user', JSON.stringify({
+                        login:true,
+                        token: res.token,
+                        details: res.user
+                    }))
+                    dispatch(userLogin({email}))
+                    setUser({email})
+                }
             }
             
         })

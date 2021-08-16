@@ -34,6 +34,8 @@ public class RestApplication {
 				.authorizeRequests()
 				.antMatchers(HttpMethod.POST, "/api/user/**").permitAll()
 				.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+				.antMatchers(HttpMethod.GET, "/api/category/**").permitAll()
+				.antMatchers(HttpMethod.GET, "/product/get-image/**").permitAll()
 				.anyRequest().authenticated().and().csrf().disable();
 		}
 	}

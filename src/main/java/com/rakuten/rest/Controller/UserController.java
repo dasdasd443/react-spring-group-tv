@@ -42,7 +42,8 @@ public class UserController {
                 "",
                 "",
                 "ADM",
-                "092512354"
+                "092512354",
+                "USSS"
         );
     }
 

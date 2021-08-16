@@ -17,47 +17,50 @@ public class Products {
     private String brand;
     private double discount_price;
     private double price;
-    private String descriptions;
+    private String description;
     private double weight;
     private String thumbnail;
     private String image;
     private String category;
     private int quantity;
     private Date created_date;
+    private Long seller_id;
 
     public Products() {
     }
     
     public Products(Long product_id, String product_name, String brand, double discount_price, double price,
-            String descriptions, double weight, String thumbnail, String image, String category, int quantity,
-            Date created_date) {
+            String description, double weight, String thumbnail, String image, String category, int quantity,
+            Date created_date, Long seller_id) {
         this.product_id = product_id;
         this.product_name = product_name;
         this.brand = brand;
         this.discount_price = discount_price;
         this.price = price;
-        this.descriptions = descriptions;
+        this.description = description;
         this.weight = weight;
         this.thumbnail = thumbnail;
         this.image = image;
         this.category = category;
         this.quantity = quantity;
         this.created_date = created_date;
+        this.seller_id = seller_id;
     }
 
-    public Products(String product_name, String brand, double discount_price, double price, String descriptions,
-            double weight, String thumbnail, String image, String category, int quantity, Date created_date) {
+    public Products(String product_name, String brand, double discount_price, double price, String description,
+            double weight, String thumbnail, String image, String category, int quantity, Date created_date, Long seller_id) {
         this.product_name = product_name;
         this.brand = brand;
         this.discount_price = discount_price;
         this.price = price;
-        this.descriptions = descriptions;
+        this.description = description;
         this.weight = weight;
         this.thumbnail = thumbnail;
         this.image = image;
         this.category = category;
         this.quantity = quantity;
         this.created_date = created_date;
+        this.seller_id = seller_id;
     }
 
     public Long getProduct_id() {
@@ -102,12 +105,12 @@ public class Products {
 
     
 
-    public String getDescriptions() {
-        return descriptions;
+    public String getDescription() {
+        return description;
     }
 
     public void setDescriptions(String descriptions) {
-        this.descriptions = descriptions;
+        this.description = descriptions;
     }
 
     public double getWeight() {
@@ -156,6 +159,58 @@ public class Products {
 
     public void setCreated_date(Date created_date) {
         this.created_date = created_date;
+    }
+    
+    public Long getSeller_id() {
+        return seller_id;
+    }
+
+    public void setSeller_id(Long seller_id) {
+        this.seller_id = seller_id;
+    }
+
+    
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((image == null) ? 0 : image.hashCode());
+        result = prime * result + ((product_id == null) ? 0 : product_id.hashCode());
+        result = prime * result + ((product_name == null) ? 0 : product_name.hashCode());
+        long temp;
+        temp = Double.doubleToLongBits(weight);
+        result = prime * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Products other = (Products) obj;
+        if (image == null) {
+            if (other.image != null)
+                return false;
+        } else if (!image.equals(other.image))
+            return false;
+        if (product_id == null) {
+            if (other.product_id != null)
+                return false;
+        } else if (!product_id.equals(other.product_id))
+            return false;
+        if (product_name == null) {
+            if (other.product_name != null)
+                return false;
+        } else if (!product_name.equals(other.product_name))
+            return false;
+        if (Double.doubleToLongBits(weight) != Double.doubleToLongBits(other.weight))
+            return false;
+        return true;
     }
 
     @Override

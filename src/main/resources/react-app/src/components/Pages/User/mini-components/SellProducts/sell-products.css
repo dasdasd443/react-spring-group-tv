@@ -1,0 +1,49 @@
+.content-container section .sell-product-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+}
+
+.content-container section .sell-product-form__information {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1.5rem;
+}
+
+.content-container section .sell-product-form__information__input-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-size: 20px;
+}
+
+.content-container section .sell-product-form__information__input-group input {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-radius: 2px;
+}
+
+.content-container section .sell-product-form__information__input-group input:focus {
+  outline: none !important;
+  border: 1px solid #33A0FF;
+  -webkit-box-shadow: 0 0 5px #33A0FF;
+          box-shadow: 0 0 5px #33A0FF;
+}
+/*# sourceMappingURL=sell-products.css.map */

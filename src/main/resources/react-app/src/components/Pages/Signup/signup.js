@@ -34,11 +34,12 @@ const Signup = () => {
                 name,
                 email,
                 password,
-                username: " ",
-                billing_address: " ",
-                shipping_address: " ",
+                username: "",
+                billing_address: "",
+                shipping_address: "",
                 role: (seller)? "SLR": "CUS",
-                phone: " "
+                phone: "",
+                seller_name:""
             })
             }
         ).then(res => res.json())
@@ -101,7 +102,6 @@ const Signup = () => {
                                     <label htmlFor="password">Password <span id="password-error" className='error'></span></label>
                                     <input type="password" id='password' placeholder="Must be at least 6 characters" required className='error'/>
                                     <FontAwesomeIcon icon={faEye} className= "show-password" onClick={ShowPassword}/>
-                                        
                                 </div>
                                 <div className='input-group'>
                                     <input type="checkbox" id="seller"/>
