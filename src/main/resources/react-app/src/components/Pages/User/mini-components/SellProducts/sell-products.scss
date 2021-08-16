@@ -1,0 +1,35 @@
+.content-container{
+    &__header{
+        
+    }
+    section{
+        .sell-product-form{
+            display:flex;
+            gap:1rem;
+            
+            &__information{
+                display:flex;
+                flex-direction: column;
+                gap:1.5rem;
+                &__input-group{
+                    display:flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    flex-direction: row;
+                    font-size:20px;
+                    input{
+                        padding:10px;
+                        font-size:17px;
+                        border: 1px solid grey;
+                        border-radius:2px;
+                    }
+                    input:focus{
+                        outline:none!important;
+                        border: 1px solid #33A0FF;
+                        box-shadow: 0 0 5px #33A0FF;
+                    }
+                }
+            }
+        }
+    }
+}

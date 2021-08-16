@@ -1,0 +1,99 @@
+.user-menu-container {
+  width: 350px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-radius: 20px;
+  padding: 20px;
+  gap: 1rem;
+}
+
+.user-menu-container .user-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1rem;
+}
+
+.user-menu-container .user-menu .messages {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.user-menu-container .user-menu div {
+  padding: 20px 20px 20px 15px;
+}
+
+.user-menu-container .user-menu a {
+  color: #52575D;
+  text-decoration: none;
+}
+
+.user-menu-container .user-menu .active {
+  background-color: #fd2e2e1c;
+  border-radius: 25px;
+}
+
+.user-menu-container .user-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.user-menu-container .user-info__sold-amount {
+  background: #FD2E2E;
+  padding: 10px;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+}
+
+.user-menu-container .user-info .user-thumbnail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+  padding: 10px;
+}
+
+.user-menu-container .user-info .user-thumbnail .profile-pic {
+  width: 30px;
+  height: 30px;
+  border-radius: 25px;
+}
+
+.user-menu-container .user-info .user-thumbnail .info-span {
+  padding: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+/*# sourceMappingURL=user-menu.css.map */

@@ -8,6 +8,16 @@ import Newsletter from '../../Content/Newsletter/newsletter';
 import Banner2 from '../../Content/Banner2/banner-2';
 import Categories from '../../Footer/Categories/categories';
 import { useSelector } from 'react-redux';
+import UserInfo from './mini-components/UserInfo/user-info.js';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import Address from './mini-components/Address/address.js';
+import SellerProducts from './mini-components/SellerProducts/seller-products.js';
+import SellProducts from './mini-components/SellProducts/sell-products.js';
+import Messages from './mini-components/Message/messages.js';
+import Dashboard from './mini-components/Dashboard/dashboard.js';
+import Manage from './mini-components/Manage/manage-users.js';
+import Payments from './mini-components/Payments/payments.js';
+import Calendar from './mini-components/Calendar/calendar.js';
 
 const User = () => {
     
@@ -21,6 +31,16 @@ const User = () => {
                 <div className="App">
                 <Header/>
                 <span className="line-title"></span>
+                <Title/>
+                <Route path="/user" exact component={UserInfo}/>
+                <Route path="/user/dashboard" component={Dashboard}/>
+                <Route path="/user/manage" component={Manage}/>
+                <Route path="/user/payments" component={Payments}/>
+                <Route path="/user/calendar" component={Calendar}/>
+                <Route path="/user/address" component={Address}/>
+                <Route path="/user/products" component={SellerProducts}/>
+                <Route path="/user/sell" component={SellProducts}/>
+                <Route path="/user/message" component={Messages}/>
                 </div>
                 <div className = "App">
                     <Footer/>

@@ -30,7 +30,8 @@ public class UserService {
                 "asdasd",
                 "q",
                 "ADM",
-                "092956363"
+                "092956363",
+                "USSS"
         );
     }
     public List<User> userList(){
@@ -48,9 +49,9 @@ public class UserService {
                 user.getEmail(),
                 user.getBilling_address(),
                 user.getShipping_address(),
+                user.getSeller_name(),
                 user.getRole(),
                 user.getPhone()
-                
         );
 
         userRepository.save(user1);

@@ -6,6 +6,7 @@ import isLoaded from './reducers/isLoaded';
 import Newsletter from './reducers/newsletter';
 import User from './reducers/user';
 import {combineReducers} from 'redux';
+import SellerProducts from './reducers/seller-products';
 
 let reducers = combineReducers({
     checkoutProducts: updateQuantity,
@@ -14,7 +15,8 @@ let reducers = combineReducers({
     favorites: Favorites,
     isLoaded: isLoaded,
     newsletter: Newsletter,
-    user: User
+    user: User,
+    sellerProducts: SellerProducts
 });
 
 export default reducers;
