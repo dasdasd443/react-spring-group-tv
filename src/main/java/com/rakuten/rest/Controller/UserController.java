@@ -1,7 +1,10 @@
 
 package com.rakuten.rest.Controller;
 
+import com.rakuten.rest.JWTAuthorizationFilter;
+import com.rakuten.rest.Model.AuthenticationResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.web.bind.annotation.*;
@@ -19,13 +22,11 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(path="api/user")
-@CrossOrigin(origins="http://localhost:3000")
+@RequestMapping("/api/user")
+@CrossOrigin(origins="http://localhost:3000", allowedHeaders = "*")
 public class UserController {
 
     private final UserService userService;
-
-
 
     @Autowired
     public UserController(UserService userService, UserRepository userRepository) {
@@ -78,6 +79,14 @@ public class UserController {
             }
         }
         return "{\"token\":\""+token+"\",\"user\":"+userService.loginUser(user).get().toString()+"}";
+    }
+    @PostMapping("/oauthenticate")
+    public ResponseEntity<?> createOAuthenticationToken(@RequestBody User user) throws Exception {
+        if (user.getEmail() != null) {
+            final String jwt = getJWTToken(user.getEmail());
+            return ResponseEntity.ok().body(new AuthenticationResponse(jwt));
+        }
+        return ResponseEntity.badRequest().body(null);
     }
 
     private String getJWTToken(String username) {
