@@ -9,7 +9,7 @@ const CardTemplate = ({title,content}) => {
                 </div>
                 <hr/>
             </div>}/>
-            <CardContent>
+            <CardContent style={{width:'100%',display:'flex',gap:'1rem'}}>
                 {content}
             </CardContent>
         </Card>

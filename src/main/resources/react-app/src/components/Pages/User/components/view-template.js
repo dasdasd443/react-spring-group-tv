@@ -20,7 +20,7 @@ const ViewTemplate = ({content,active}) => {
                 </div>
             </div>
             <div className="content-container">
-                <Grid container spacing={2}>
+                <Grid container spacing={3}>
                     <Grid item xs={12} sm={12} md={4}>
                         <UserMenu user={user} active={active}/> 
                     </Grid>
