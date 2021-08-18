@@ -34,12 +34,7 @@ const Signup = () => {
                 name,
                 email,
                 password,
-                username: "",
-                billing_address: "",
-                shipping_address: "",
                 role: (seller)? "SLR": "CUS",
-                phone: "",
-                seller_name:""
             })
             }
         ).then(res => res.json())

@@ -34,8 +34,11 @@ public class RestApplication {
 				.authorizeRequests()
 				.antMatchers(HttpMethod.POST, "/api/user/**").permitAll()
 				.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+				.antMatchers(HttpMethod.GET, "/api/user/get-user/**").permitAll()
 				.antMatchers(HttpMethod.GET, "/api/category/**").permitAll()
 				.antMatchers(HttpMethod.GET, "/product/get-image/**").permitAll()
+				.antMatchers(HttpMethod.GET, "/product/all").permitAll()
+				.antMatchers(HttpMethod.GET, "/product/**").permitAll()
 				.anyRequest().authenticated().and().csrf().disable();
 		}
 	}

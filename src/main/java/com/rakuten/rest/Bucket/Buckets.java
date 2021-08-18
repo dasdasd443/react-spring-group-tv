@@ -2,7 +2,7 @@ package com.rakuten.rest.Bucket;
 
 public enum Buckets {
     
-    PROFILE_IMAGE("rakuten-spring-aws-bucket");
+    PROFILE_IMAGE("rakutech-spring-aws-bucket");
 
     private final String bucket;
 

@@ -32,7 +32,7 @@ const User = () => {
                 <Header/>
                 <span className="line-title"></span>
                 <Title/>
-                <Route path="/user" exact component={UserInfo}/>
+                <Route path="/user/user" exact component={UserInfo}/>
                 <Route path="/user/dashboard" component={Dashboard}/>
                 <Route path="/user/manage" component={Manage}/>
                 <Route path="/user/payments" component={Payments}/>

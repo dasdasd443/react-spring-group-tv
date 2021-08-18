@@ -14,33 +14,31 @@ const ProductInformation = ({id}) => {
     const favorites = useSelector(state => state.favorites);
     const [curProduct,setcurProduct] = useState(0);
     const [isLoaded, setisLoaded] = useState(false);
-    const [isAdded, setisAdded] = useState((checkoutList.some(item => item.id==id))?true:false);
-    const [isFavorite, setisFavorite] = useState((favorites.some(item => item.id==id))?true:false);
+    const [isAdded, setisAdded] = useState((checkoutList.some(item => item.product_id==id))?true:false);
+    const [isFavorite, setisFavorite] = useState((favorites.some(item => item.product_id==id))?true:false);
+    const [seller, setSeller] = useState(0);
     const dispatch = useDispatch();
     const getData = useCallback(async function getData(){
-        const response = await fetch(`https://fakestoreapi.com/products/${id}`)
+        const response = await fetch(`http://localhost:5000/product/get-product/${id}`)
         .then(res=>res.json())
-        .then(json=>json)
-        setisLoaded(true);
-        setcurProduct({...response, quantity: 1});
-        dispatch(setCurrentProduct({...response,quantity: 1, favorite: 0,size: "XS",color:"Black"}));
+        .then(json=>{
+            setisLoaded(true);
+            setcurProduct({...json, quantity: 1});
+            dispatch(setCurrentProduct({...json,quantity: 1, favorite: 0,size: "XS",color:"Black"}));
+            return json;
+        })
+        .then(json => {
+            fetch(`http://localhost:5000/api/user/get-user/${json.seller_id}`).then(res => res.json())
+            .then(json => setSeller(json));
+        })
+        
     })
+
     useEffect( ()=> {
         let mounted = true;
-        if(products && !isLoaded){
-            let [item] = products.filter(item => item.id == id);
-            setcurProduct({...item,quantity: 1});
-            dispatch(setCurrentProduct({...item,quantity: 1, favorite: 0,size: "XS",color:"Black"}));
-            setisLoaded(true);
-        }else{
-            if(!isLoaded){
-                getData();
-                
-            }
-        }
-
+        getData();
         return () => mounted = false;
-    },[]);
+    },[id]);
 
     const addToCartFunc = useCallback((item) => {
         item = {...item, unitPrice: item.quantity * item.price, quantity: item.quantity - 1};
@@ -64,12 +62,12 @@ const ProductInformation = ({id}) => {
                 <div className="items-left-details">
                     <div className="items-left-details--productImages">
                         <figure className="items-left-details--productImages--largeView">
-                            <img src={curProduct.image} alt=""/>
+                            <img src={`http://localhost:5000/product/get-image/${curProduct.product_id}/${curProduct.image}`} alt=""/>
                         </figure>
                     </div>
                     <div className="items-left-details-productDetails">
-                        <h2 className="items-left-details-h2">{curProduct.itemName || curProduct.title}</h2>
-
+                        <h2 className="items-left-details-h2">{curProduct.product_name}</h2>
+                        <span>{(seller!==0)? `Sold by: ${seller.name}`:null}</span>
                         <div className="items-left-details-productDetails-reviewDetails">
                             <div className="items-left-details-productDetails-reviewDetails--str">
                                 <FontAwesomeIcon icon={faStar}/>
@@ -84,7 +82,7 @@ const ProductInformation = ({id}) => {
                         <hr/>
                         <div className="bs-category-gallery--one--box--price items-container-menus-content--price price-bolder">
                             <p className="bs-category-gallery--one--box--price--enabled price-bolder-red" >${curProduct.price.toFixed(2)}</p>
-                            <p className="bs-category-gallery--one--box--price--disabled">$599</p>
+                            <p className="bs-category-gallery--one--box--price--disabled">{(curProduct.discount_price!==0)?`$${curProduct.price - curProduct.discount_price}`:null}</p>
                         </div>
                         
                         <div className="stock">
@@ -94,49 +92,8 @@ const ProductInformation = ({id}) => {
 
                         <div className="category">
                         <span className="category--label">Category :</span>
-                        <span className="category--value">{curProduct.category[0].toUpperCase() + curProduct.category.slice(1).toLowerCase()}</span>
-                        </div>
-
-                        <p className="items-left-details-productDetails-free"> Free Shipping</p>
-                        
-                        <hr/>
-
-                        <div className="color">
-                            <label htmlFor="" className="color-label">Select Color :</label> 
-                            <label className="color-option">
-                                <input name="color" type="radio" className="color-radio" />
-                                <span className="pink"></span>
-                                </label>
-                                
-                                <label className="color-option">
-                                <input name="color" type="radio" className="color-radio" />
-                                <span className="red"></span>
-                                </label>
-                                
-                                <label className="color-option">
-                                <input name="color" type="radio" className="color-radio" />
-                                <span className="black"></span>
-                                </label>
-
-                                <label className="color-option">
-                                <input name="color" type="radio" className="color-radio" />
-                                <span className="white"></span>
-                                </label>
-
-                                <label className="color-option">
-                                <input name="color" type="radio" className="color-radio" />
-                                <span className="brown"></span>
-                                </label>
-                        </div>
-
-                        <div className="sizing">
-                        <label htmlFor="" className="sizing-label">Size</label>
-                        <select name="" id="" className="sizing-select">
-                            <option value="">XS</option>
-                            <option value="">S</option>
-                            <option value="">M</option>
-                        </select>
-                        </div>
+                        <span className="category--value">{curProduct.category}</span>
+                        </div>   
                         <hr/>
                         <div className="bottomOptions">
                             <div className="numOrder">

@@ -15,8 +15,8 @@ const Checkout = () => {
         return total + elem.unitPrice;
     }), 0);
     
-    const productsElement = products.map(useCallback(item => 
-        <section key={item.id}><ItemList id={item.id} itemName={item.itemName || item.title} image={item.image} price={item.price.toFixed(2)} quantity={item.quantity} unitPrice={item.unitPrice}/><hr/></section>)
+    const productsElement = products.map(useCallback(product => 
+        <section key={product.product_id}><ItemList product={product}/><hr/></section>)
     );
     return (
             <div className='container'>

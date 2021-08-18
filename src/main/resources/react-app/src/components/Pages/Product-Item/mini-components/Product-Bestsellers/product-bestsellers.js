@@ -9,7 +9,7 @@ const ProductBestSellers = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [bestSeller,setBestSeller] = useState(0);
     const getData = useCallback(async function getData(){
-        const response = await fetch(`https://fakestoreapi.com/products`)
+        const response = await fetch(`http://localhost:5000/product/all`)
         .then(res=>res.json())
         .then(json=>json)
         setBestSeller(response[0])
@@ -26,7 +26,7 @@ const ProductBestSellers = () => {
         <section className="items-right" style={BestSellerCSS}>
                     <div className="items-right-bestSeller">
                         {(bestSeller)? <div><h4 className="items-right-bestSeller-h4">BEST SELLER</h4>
-                        <BestSellerCard id={bestSeller.id} itemName={bestSeller.title} price={bestSeller.price.toFixed(2)} image={bestSeller.image} hotornot={"hot"}/></div>: <SolarSystemLoading/>}
+                        <BestSellerCard product={bestSeller} hotornot={"hot"}/></div>: <SolarSystemLoading/>}
                     </div>
                     <div className="items-right-slides">
                         <div className="items-right-slides-button"></div>
