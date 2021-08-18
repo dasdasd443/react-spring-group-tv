@@ -55,7 +55,7 @@ public class ProductsService {
                     products.setPrice(product.getPrice());
                     products.setWeight(product.getWeight());
                     products.setDescriptions(product.getDescription());
-                    product.setCategory(product.getCategory());
+                    products.setCategory(product.getCategory());
                     products.setCreated_date(product.getCreated_date());
                     return productsRepository.save(products);
                 }

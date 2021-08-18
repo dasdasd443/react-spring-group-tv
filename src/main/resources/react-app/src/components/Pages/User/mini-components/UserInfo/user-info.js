@@ -7,6 +7,7 @@ import './user-info.css'
 import { Avatar, Button, Card, CardContent, CardHeader, CardMedia, Dialog, DialogActions, DialogContent, DialogTitle, Grid, TextField, Typography, withStyles } from "@material-ui/core";
 import { red } from "@material-ui/core/colors";
 import ViewTemplate from "../../components/view-template";
+import ActionDialog from "../../components/action-dialog";
 
 const UserInfo = () => {
     const [user, setUser] = useState((localStorage.getItem('user')!== null)? JSON.parse(localStorage.getItem('user')).details: false)
@@ -142,18 +143,15 @@ const UserInfo = () => {
                                             </UpdateProfileButton>
                                         </Grid>
                                     </Grid>
-                                    <Dialog open={updateDialog} onClose={() => setUpdateDialog(false)}>
-                                        <DialogTitle>Update Profile</DialogTitle>
-                                        <DialogContent>Continue updating profile?</DialogContent>
-                                        <DialogActions>
-                                            <Button color="secondary" onClick={UpdateProfile}>
-                                                Update Profile
-                                            </Button>
-                                            <Button color="secondary" onClick={() => setUpdateDialog(false)}>
-                                                Cancel
-                                            </Button>
-                                        </DialogActions>
-                                    </Dialog>
+                                    <ActionDialog
+                                    title={"Update Profile"}
+                                    content={"Continue updating profile?"}
+                                    ok={"Update Profile"}
+                                    cancel={"Cancel"}
+                                    open={updateDialog}
+                                    okAction={UpdateProfile}
+                                    cancelAction={() => setUpdateDialog(false)}
+                                    />
                                 </form>
                             </CardContent>
                         </Card>

@@ -88,6 +88,8 @@ const SellerProducts = () => {
 
         const [categories, setCategories] = useState(0);
 
+        
+
         const GetCategories = useCallback(async function GetCategories(){
             await fetch('http://localhost:5000/api/category/').then(res => res.json())
                     .then(res => setCategories(res));
@@ -108,7 +110,8 @@ const SellerProducts = () => {
             product_update.weight = weight;
             product_update.price = price;
             product_update.description = description;
-
+            product_update.category = selectedCategory;
+            console.log(product)
             await fetch('http://localhost:5000/product/update',{
                 method: 'PUT',
                 headers: {
@@ -116,6 +119,8 @@ const SellerProducts = () => {
                     "Content-type":"application/json"
                 },
                 body: JSON.stringify(product_update)
+            }).then(res => {
+                setEditDialog(false)
             })
         });
         
