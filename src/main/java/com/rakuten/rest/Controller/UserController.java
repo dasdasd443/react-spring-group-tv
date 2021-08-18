@@ -36,9 +36,13 @@ public class UserController {
     public User hello(){
         return new User(
                 "Victor Chiong",
-                "victor",
                 "12345678",
-                "cjvicro@gmail.com"
+                "cjvicro@gmail.com",
+                "",
+                "",
+                "ADM",
+                "092512354",
+                "USSS"
         );
     }
 
@@ -47,19 +51,51 @@ public class UserController {
         return userService.userList();
     }
 
+    @PutMapping("/update-user")
+    public void updateUser(@RequestBody User user){
+        userService.updateUser(user);
+    }
+
+    @GetMapping("/get-user/{id}")
+    public Optional<User> user(@PathVariable("id") Long id){
+        return userService.getUser(id);
+    }
+
     @PostMapping("/register")
     public String registerUser(@RequestBody User user){
-        return userService.registerUser(user);
+        String user_obj = userService.registerUser(user);
+        String token="";
+        if(token==""){
+            if(userService.loginUser(user).isPresent()){
+                token = getJWTToken(user.getEmail());
+            }else{
+                token= "not found";
+            }
+        }
+        return "{\"token\":\""+token+"\",\"user\":"+user_obj+"}";
     }
 
     @PostMapping("/login")
     // @RequestBody User user
+<<<<<<< HEAD
     public User loginUser(@RequestBody User user){
         String token = getJWTToken(user.getUsername());
         User loggedUser = new User();
         loggedUser.setEmail(user.getEmail());
         loggedUser.setToken(token);
         return loggedUser;
+=======
+    public String signInUser(@RequestBody User user){
+        String token="";
+        if(token==""){
+            if(userService.loginUser(user).isPresent()){
+                token = getJWTToken(user.getEmail());
+            }else{
+                token= "not found";
+            }
+        }
+        return "{\"token\":\""+token+"\",\"user\":"+userService.loginUser(user).get().toString()+"}";
+>>>>>>> feature/user-crud
     }
 
     private String getJWTToken(String username) {
