@@ -69,12 +69,17 @@ public class UserService {
                 newuser.setEmail(user.getEmail());
                 newuser.setName(user.getName());
                 newuser.setPhone(user.getPhone());
+                newuser.setRole(user.getRole());
                 newuser.setSeller_name(user.getSeller_name());
                 newuser.setShipping_address(user.getShipping_address());
                 newuser.setBilling_address(user.getBilling_address());
                 return userRepository.save(newuser);
             }
         );
+    }
+
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
     }
 
 

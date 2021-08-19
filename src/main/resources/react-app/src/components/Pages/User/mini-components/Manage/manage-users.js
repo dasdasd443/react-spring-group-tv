@@ -1,6 +1,6 @@
 import { withStyles,InputLabel, Input,FormControl, Select, TextField, CircularProgress, Grid, Table, TableBody, TableContainer, TableHead, TableRow, TableCell, IconButton, Button, InputAdornment, MenuItem, FormHelperText } from "@material-ui/core";
 import { red } from "@material-ui/core/colors";
-import { DeleteForever, Visibility, VisibilityOff } from "@material-ui/icons";
+import { DeleteForever, Edit, Visibility, VisibilityOff } from "@material-ui/icons";
 import React from "react";
 import { useCallback, useEffect, useState } from "react";
 import ActionDialog from "../../components/action-dialog";
@@ -54,6 +54,27 @@ const Manage = () => {
                 setActions(Math.random())
             })
         })
+
+        const [updateDialog, setUpdateDialog] = useState(false);
+        const [selectedRole, setSelectedRole] = useState(userCell.role)
+
+        const UpdateUser = useCallback(async function UpdateUser(){
+            let updateUser = userCell;
+            updateUser.role = selectedRole;
+
+            await fetch('http://localhost:5000/api/user/update-user',{
+                method:'PUT',
+                headers: {
+                    'Authorization': (JSON.parse(localStorage.getItem('user')) !== null)? JSON.parse(localStorage.getItem('user')).token: "",
+                    "Content-type":"application/json"
+                },
+                body: JSON.stringify(updateUser)
+            }).then(res => {
+                setUpdateDialog(false)
+                setActions(Math.random())
+            })
+        });
+
         return (
             <React.Fragment>
                 <TableRow>
@@ -62,7 +83,27 @@ const Manage = () => {
                     <TableCell>{userCell.email}</TableCell>
                     <TableCell>{userCell.role}</TableCell>
                     <TableCell>
-
+                        <IconButton aria-label="expand row" size="small" onClick={()=>setUpdateDialog(true)}>
+                            <Edit/>
+                        </IconButton>
+                        <ActionDialog
+                        open={updateDialog}
+                        title="Update User role"
+                        content={
+                            <FormControl style={{width:'100%'}}>
+                                <InputLabel>Select User Role</InputLabel>
+                                <Select value={selectedRole} onChange={(event)=> setSelectedRole(event.target.value)}>
+                                    <MenuItem value={"ADM"}>Admin</MenuItem>
+                                    <MenuItem value={"SLR"}>Seller</MenuItem>
+                                    <MenuItem value={"CUS"}>Customer</MenuItem>
+                                </Select>
+                            </FormControl>
+                        }
+                        ok={'Update'}
+                        cancel={'Cancel'}
+                        okAction={UpdateUser}
+                        cancelAction={() => setUpdateDialog(false)}
+                        />
                     </TableCell>
                     <TableCell>
                         <IconButton aria-label="expand row" size="small" onClick={()=>setDeleteDialog(true)}>

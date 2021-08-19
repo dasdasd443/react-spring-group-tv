@@ -57,11 +57,11 @@ const BestSellerCard = ({product ,hotornot}) => {
             <section className="bs-category-gallery--one--box--details">
                 <CardContent>
                     <div className="bs-category-gallery--one--box--details--price">
-                        <p className="bs-category-gallery--one--box--details--price--enabled" >${product.price}</p>
+                        <p className="bs-category-gallery--one--box--details--price--enabled" >${product.price.toLocaleString(undefined,{minimumFractionDigits:2})}</p>
                         <p className="bs-category-gallery--one--box--details--price--disabled">{(product.discount_price!== 0)?`$${product.price - product.discount_price}`:null}</p>
                     </div>
                     <h4 className="bs-category-gallery--one--box--details--h4"><Link to={`/product-item/${product.product_id}`}>{product.product_name}</Link></h4>
-                    <small>Sold by: {(seller!==0)? (seller.seller_name!==null)?seller.name:null:null}</small>
+                    <small>Sold by: {(seller!==0)? (seller.seller_name!=='null' && seller.seller_name!=="")?seller.seller_name:seller.name:null}</small>
                     <div className="bs-category-gallery--one--box--details--stars">
                     <FontAwesomeIcon icon={faStar}/>
                         <FontAwesomeIcon icon={faStar}/>
