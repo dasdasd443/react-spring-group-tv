@@ -111,7 +111,6 @@ const SellerProducts = () => {
             product_update.price = price;
             product_update.description = description;
             product_update.category = selectedCategory;
-            console.log(product)
             await fetch('http://localhost:5000/product/update',{
                 method: 'PUT',
                 headers: {
