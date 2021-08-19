@@ -1,6 +1,6 @@
 export const oAuthVerification = async (obj) => {
 	const load = JSON.stringify(obj);
-	const response = await fetch('http://localhost:5000/api/user/oauthenticate', {
+	const response = await fetch('https://localhost:5000/api/user/oauthenticate', {
 	  method: 'POST',
 	  headers: {
 	    'Content-Type': 'application/json',

@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/user")
-@CrossOrigin(origins="http://localhost:3000", allowedHeaders = "*")
+@CrossOrigin(origins="https://localhost:3000", allowedHeaders = "*")
 public class UserController {
 
     private final UserService userService;
