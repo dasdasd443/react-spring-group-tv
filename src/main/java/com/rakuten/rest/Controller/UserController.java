@@ -53,6 +53,16 @@ public class UserController {
         return userService.userList();
     }
 
+    @PutMapping("/update-user")
+    public void updateUser(@RequestBody User user){
+        userService.updateUser(user);
+    }
+
+    @GetMapping("/get-user/{id}")
+    public Optional<User> user(@PathVariable("id") Long id){
+        return userService.getUser(id);
+    }
+
     @PostMapping("/register")
     public String registerUser(@RequestBody User user){
         String user_obj = userService.registerUser(user);

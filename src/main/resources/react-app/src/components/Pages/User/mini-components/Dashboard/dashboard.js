@@ -1,26 +1,26 @@
 import { faBell, faSearch, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Card, CardContent, CardHeader } from "@material-ui/core";
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
+import ViewTemplate from "../../components/view-template";
 import UserMenu from "../Menu/user-menu";
+import DashBoardCalendar from "./mini-components/dashboard-calendar";
+import SalesStatistics from "./mini-components/sales-statistics";
 
 const Dashboard = () => {
     const [user, setUser] = useState((localStorage.getItem('user')!== null)? JSON.parse(localStorage.getItem('user')).details: false)
     return (
-        <section>
-            {(user === false)? <Redirect to="/login"/>:null}
-            <div className="content-header">
-                <div><span>RAKU</span><span style={{color: "#FD2E2E"}}>TECH</span><span> {(user.role==='SLR')?"SELLER":(user.role==='ADM')?"ADMIN":"USER"}</span></div>
-                <div className="content-header__icons">
-                    <div><FontAwesomeIcon icon={faSearch}/></div>
-                    <div><FontAwesomeIcon icon={faBell}/></div>
-                    <div><FontAwesomeIcon icon={faUser}/></div>
-                </div>
+        <ViewTemplate
+        active="dashboard"
+        content={
+            // {/* total width 68% gap 3% */}
+            <div style={{width:'68%',gap:'1rem',display:'flex',flexWrap:'wrap'}}>
+                <SalesStatistics style={{width:'55%'}}/>
+                <DashBoardCalendar style={{width:'42%'}}/>
             </div>
-            <div className="content-container">
-                <UserMenu user={user} active="dashboard"/> 
-            </div>
-        </section>
+        }
+        />
     )
 }
 

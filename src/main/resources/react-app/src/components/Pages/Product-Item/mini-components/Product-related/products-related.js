@@ -13,23 +13,23 @@ const ProductsRelated = ({id}) => {
     const [curProduct,setcurProduct] = useState(0);
 
     const getProducts = useCallback(async function getProducts(){
-        const response = await fetch(`https://fakestoreapi.com/products`)
+        const response = await fetch(`http://localhost:5000/product/all`)
         .then(res => res.json())
         .then(json => json)
         setProducts(response)
     })
     const getData = useCallback(async function getData(){
-        const response = await fetch(`https://fakestoreapi.com/products/${id}`)
+        const response = await fetch(`http://localhost:5000/product/get-product/${id}`)
         .then(res=>res.json())
         .then(json=>json)
         setcurProduct({...response, quantity: 1});
         setisLoaded(true);
         if(products){
-            let relprod = products.filter(item => item.category == response.category)
-            setRelatedProducts(relprod.map(item =>{ 
-                return <BestSellerCard key={item.id} id={item.id} itemName={item.title} price={item.price.toFixed(2)} image={item.image} hotornot={"not"}/>
+            let relprod = products.filter(product => product.category === response.category)
+            relprod = relprod.filter(product => product.product_id !== response.product_id)
+            setRelatedProducts(relprod.map(product =>{ 
+                return <BestSellerCard key={product.product_id} product={product} hotornot={"not"}/>
             }))
-            
         }
         
     })
@@ -40,9 +40,8 @@ const ProductsRelated = ({id}) => {
             getProducts();
             getData();
         }
-
         return () => mounted = false;
-    },[]);
+    },[id,products]);
     
     
     return (

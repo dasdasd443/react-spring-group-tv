@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -33,8 +34,8 @@ public class ProductsService {
         return productsRepository.getSellerProducts(id);
     }
 
-    public void saveProduct(Products product){
-        productsRepository.save(product);
+    public Products saveProduct(Products product){
+        return productsRepository.saveAndFlush(product);
     }
 
     public void deleteProduct(Long id){
@@ -46,9 +47,16 @@ public class ProductsService {
                 products -> {
                     products.setProduct_name(product.getProduct_name());
                     products.setBrand(product.getBrand());
-                    products.setPrice(product.getPrice());
                     products.setDiscount_price(product.getDiscount_price());
-
+                    products.setSeller_id(product.getSeller_id());
+                    products.setImage(product.getImage());
+                    products.setQuantity(product.getQuantity());
+                    products.setThumbnail(product.getThumbnail());
+                    products.setPrice(product.getPrice());
+                    products.setWeight(product.getWeight());
+                    products.setDescriptions(product.getDescription());
+                    products.setCategory(product.getCategory());
+                    products.setCreated_date(product.getCreated_date());
                     return productsRepository.save(products);
                 }
         );
@@ -58,5 +66,9 @@ public class ProductsService {
         
         String path = String.format("%s/%s", Buckets.PROFILE_IMAGE.getBucket(), product_name);
         return imageStore.getImage(path,filename);
+    }
+
+    public Optional<Products> getProduct(Long product_id) {
+        return productsRepository.findById(product_id);
     }
 }

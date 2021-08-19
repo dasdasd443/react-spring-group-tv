@@ -6,7 +6,6 @@ import Banner from '../../Content/Banner/banner';
 import BestSellers from '../../Content/BestSeller/bestSellers';
 import Newsletter from '../../Content/Newsletter/newsletter';
 import Banner2 from '../../Content/Banner2/banner-2';
-import Categories from '../../Footer/Categories/categories';
 import { useSelector } from 'react-redux';
 import UserInfo from './mini-components/UserInfo/user-info.js';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
@@ -18,6 +17,7 @@ import Dashboard from './mini-components/Dashboard/dashboard.js';
 import Manage from './mini-components/Manage/manage-users.js';
 import Payments from './mini-components/Payments/payments.js';
 import Calendar from './mini-components/Calendar/calendar.js';
+import Category from './mini-components/Category/category.js';
 
 const User = () => {
     
@@ -32,8 +32,9 @@ const User = () => {
                 <Header/>
                 <span className="line-title"></span>
                 <Title/>
-                <Route path="/user" exact component={UserInfo}/>
+                <Route path="/user/user" exact component={UserInfo}/>
                 <Route path="/user/dashboard" component={Dashboard}/>
+                <Route path="/user/category" component={Category}/>
                 <Route path="/user/manage" component={Manage}/>
                 <Route path="/user/payments" component={Payments}/>
                 <Route path="/user/calendar" component={Calendar}/>

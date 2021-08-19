@@ -6,34 +6,25 @@ import {setInitialProducts} from '../../../../../store/action/store-actions';
 import {SolarSystemLoading} from 'react-loadingg';
 import './item-store-list.css';
 let images = new Images();
-const ItemStoreList = () => {
+const ItemStoreList = ({load}) => {
     const productList = useSelector(state => state.productList);
-    const [productListElements,setproductListElements] = useState((productList)? productList.map(item => {
-        return <Item key={item.id} description={item.description} itemName={item.itemName || item.title} image={item.image} price={item.price.toFixed(2)} id={item.id}/>
-    }): ''); 
-    const [isLoaded, setisLoaded] = useState(useSelector(state => state.productList));
+    const [productListElements,setproductListElements] = useState(0); 
     const [products,setProducts] = useState(useSelector(state => state.productList));
     const dispatch = useDispatch();
     const getData = useCallback( async function getData(){
-        const response = await fetch('https://fakestoreapi.com/products')
+        await fetch('http://localhost:5000/product/all')
         .then(res=>res.json())
-        .then(json=>json);
-        setProducts(response);
-        return response;
+        .then(json=>{
+            setProducts(json);
+            dispatch(setInitialProducts(json));
+            setproductListElements(json.map(product => {
+                return <Item key={product.product_id} product={product}/>
+            }));
+        });
     });
     useEffect( () => {
-        if(!isLoaded){
-            getData();
-            if(products){
-                setisLoaded(true);
-                setProducts(products);
-                dispatch(setInitialProducts(products));
-                setproductListElements(products.map(item => {
-                    return <Item key={item.id} description={item.description} itemName={item.itemName || item.title} image={item.image} price={item.price.toFixed(2)} id={item.id}/>
-                }));
-            }
-        }
-    });
+        getData();
+    },[load]);
     
     return (
         <section className="items-container">
@@ -65,7 +56,7 @@ const ItemStoreList = () => {
                 </div>
             </div>
             <div className="items-container-menus">
-                {(products)? productListElements: <SolarSystemLoading/>}
+                {(productListElements!== 0 )? productListElements: <SolarSystemLoading/>}
             </div>
 
             <div className="items-container-menuNumbers">

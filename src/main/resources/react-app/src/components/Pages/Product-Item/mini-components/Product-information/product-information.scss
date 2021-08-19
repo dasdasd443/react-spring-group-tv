@@ -5,7 +5,6 @@
 }
 .items-left-details{
     display: flex;
-    justify-content: space-between;
 
     &-h2{
         font-weight: bolder;
@@ -22,7 +21,7 @@
             display: flex;
             justify-content: center;
             img{
-                object-fit: fill;
+                object-fit: cover;
                 max-height: 80%;
                 max-width: 80%;
             }

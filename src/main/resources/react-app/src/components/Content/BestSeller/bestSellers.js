@@ -9,41 +9,38 @@ import {useDispatch, useSelector} from 'react-redux';
 import {SolarSystemLoading} from 'react-loadingg';
 
 let images = new Images();
-const BestSeller = () => {
+const BestSeller = ({load}) => {
     const productList = useSelector(state => state.productList);
     //fuck you javascript, to set the initial products of the store to the default Rakuten, remove the API call and setInitialProducts dispatch
-    const [productsElement, setProductsElement] = useState((productList)? productList.map((elem,index) => {
-        return (index != 0)? <BestSellerCard description={elem.description} key={elem.id} id={elem.id} itemName={elem.title || elem.itemName} price={elem.price.toFixed(2)} image={elem.image} hotornot="not"/>: <BestSellerCard key={elem.id} id={elem.id} description = {elem.description} itemName={elem.itemName || elem.title} price={elem.price.toFixed(2)} image={elem.image} hotornot="hot"/>
-    }): '');
+    // const [productsElement, setProductsElement] = useState((productList)? productList.map((elem,index) => {
+    //     return (index != 0)? <BestSellerCard description={elem.description} key={elem.id} id={elem.id} itemName={elem.title || elem.itemName} price={elem.price.toFixed(2)} image={elem.image} hotornot="not"/>: <BestSellerCard key={elem.id} id={elem.id} description = {elem.description} itemName={elem.itemName || elem.title} price={elem.price.toFixed(2)} image={elem.image} hotornot="hot"/>
+    // }): '');
+
+    const [productsElement, setProductsElement] = useState(0);
     
     const [isLoaded, setisLoaded] = useState(useSelector(state => state.productList));
     const [products,setProducts] = useState(useSelector(state => state.productList));
     const dispatch = useDispatch();
     
     const getData = useCallback(async function getData(){
-        const response = await fetch('https://fakestoreapi.com/products')
+        const response = await fetch('http://localhost:5000/product/all')
         .then(res=>res.json())
-        .then(json=>json);
+        .then(json=>json)
+        .then(json => {
+            setProducts(json);
+            dispatch(setInitialProducts(json));
+            setProductsElement(json.map((product,index) => {
+                return (index != 0)? <BestSellerCard product={product} hotornot="not"/>: <BestSellerCard product={product} hotornot="not"/>
+            }));
+        });
         setProducts(response);
         return response;
     })
     
     
     useEffect(()=> {
-        let mounted = true;
-        if(!isLoaded){
-            getData();
-            if(products){
-                setisLoaded(true);
-                setProducts(products);
-                dispatch(setInitialProducts(products));
-                setProductsElement(products.map((elem,index) => {
-                    return (index != 0)? <BestSellerCard description={elem.description} key={elem.id} id={elem.id} itemName={elem.title || elem.itemName} price={elem.price.toFixed(2)} image={elem.image} hotornot="not"/>: <BestSellerCard key={elem.id} id={elem.id} description = {elem.description} itemName={elem.itemName || elem.title} price={elem.price.toFixed(2)} image={elem.image} hotornot="hot"/>
-                }));
-            }
-        }
-        return () => mounted = false;
-    });
+        getData();
+    },[load]);
 
     return (
         <section className="bs-category" style={BestSellerCSS}>
@@ -66,7 +63,7 @@ const BestSeller = () => {
             <div className="bs-category-gallery">
                 
                 <div className="bs-category-gallery--one">
-                    {(products)? productsElement: <SolarSystemLoading/>}
+                    {(productsElement !== 0)? productsElement: <SolarSystemLoading/>}
                 </div>
             </div>
         

@@ -21,7 +21,7 @@ const Header = (props) =>
     })
     const [loggedIn,setLoggedIn] = useState((localStorage.getItem('user')!==null)? JSON.parse(localStorage.getItem('user')): false);
     console.log(loggedIn)
-    let user = (loggedIn !== false)? <div style={{display:"flex", gap: "1rem"}}> <Link to="/user" className="user">{loggedIn.details.email}</Link> | <Link to="/" className="user" onClick={LogoutUser}>Logout</Link></div>: <Link to="/login" className="user">My profile</Link>;
+    let user = (loggedIn !== false)? <div style={{display:"flex", gap: "1rem"}}> <Link to="/user/dashboard" className="user">{loggedIn.details.email}</Link> | <Link to="/" className="user" onClick={LogoutUser}>Logout</Link></div>: <Link to="/login" className="user">Login</Link>;
     
     return (
         <section className="header" style={HeaderCSS}>
