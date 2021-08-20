@@ -19,7 +19,7 @@ const ItemList = ({product}) => {
                 <span><Link to={`/product-item/${product.product_id}`}>{product.product_name}</Link></span>
             </div>
             <div>
-                <span>${product.price}</span>
+                <span>${product.price.toLocaleString(undefined, {minimumFractionDigits:2})}</span>
                 <input type="hidden" className='price' value={product.price}/>
             </div>
             <div className="items-list__item--quantity">
@@ -31,7 +31,7 @@ const ItemList = ({product}) => {
             </div>
             <div>
                 <input type="hidden" name="" value="0" className="unit-price-hidden"/>
-                <span className='unit-price'>${product.unitPrice.toFixed(2)}</span>
+                <span className='unit-price'>${product.unitPrice.toLocaleString(undefined, {minimumFractionDigits:2})}</span>
             </div>
         </section>
     );
