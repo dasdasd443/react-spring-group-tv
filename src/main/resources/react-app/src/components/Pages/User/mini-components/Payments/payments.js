@@ -1,5 +1,6 @@
 import { faBell, faSearch, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Card } from "@material-ui/core";
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
 import ViewTemplate from "../../components/view-template";
@@ -10,6 +11,12 @@ const Payments = () => {
     return (
         <ViewTemplate
         active={"payments"}
+        content={
+            <Card>
+                {(user.role!=="ADM" && user.role!=="SLR")?<Redirect to="/user/user"/>:null}
+                asdasd
+            </Card>
+        }
         />
     )
 }

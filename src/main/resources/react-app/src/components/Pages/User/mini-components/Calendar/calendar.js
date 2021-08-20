@@ -8,6 +8,7 @@ const Calendar = () => {
     const [user, setUser] = useState((localStorage.getItem('user')!== null)? JSON.parse(localStorage.getItem('user')).details: false)
     return (
         <section>
+            {(user.role !== "ADM" && user.role !=="SLR")? <Redirect to="/user/user/"/>:null}
             {(user === false)? <Redirect to="/login"/>:null}
             <div className="content-header">
                 <div><span>RAKU</span><span style={{color: "#FD2E2E"}}>TECH</span><span> {(user.role==='SLR')?"SELLER":(user.role==='ADM')?"ADMIN":"USER"}</span></div>

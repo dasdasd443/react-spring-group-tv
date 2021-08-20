@@ -8,9 +8,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Delete, Edit } from "@material-ui/icons";
 import React from "react";
+import { Redirect } from "react-router-dom";
 
 
 const Category = () => {
+    const [user, setUser] = useState((localStorage.getItem('user')!== null)? JSON.parse(localStorage.getItem('user')).details: false)
     const [categoryList, setCategoryList] = useState(0);
     const [category,setCategory] = useState('');
     const [categoryDescription,setCategoryDescription] = useState('');
@@ -163,6 +165,7 @@ const Category = () => {
         active="category"
         content={
             <section>
+                {(user.role!=="ADM")? (user.role!=="SLR")?<Redirect to="/user/user"/>:<Redirect to="/user/dashboard"/>:null}
                 <Grid container spacing={2}>
                     <Grid item lg={8}>
                         <CardTemplate

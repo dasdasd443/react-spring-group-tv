@@ -9,13 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="orders")
-public class Orders {
+@Table(name="orders_details")
+public class OrderDetails {
     private @Id
     @GeneratedValue @Column(name="id") Long id;
-    private @Column(name="customer_id", length=11) Long customer_id;
-    private @Column(name="order_date") Date order_date;
-    private @Column(name="order_status") String order_status;
+    private @Column(name="order_id", length=11) Long order_id;
+    private @Column(name="product_id") Long product_id;
+    private @Column(name="quantity") Integer quantity;
 
     
 }
