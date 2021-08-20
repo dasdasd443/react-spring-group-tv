@@ -259,6 +259,7 @@ const SellerProducts = () => {
         active="products"
         content={
             <Card className={styles.header}>
+                {(user.role!=="ADM" && user.role!=="SLR")? <Redirect to="/user/user"/>:null}
                 <CardHeader title={
                     <div style={{display:'flex', flexDirection:'column', gap:'1rem'}}>
                         <div style={{display:'flex',justifyContent:'space-between'}}>

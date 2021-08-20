@@ -3,6 +3,7 @@ import { red } from "@material-ui/core/colors";
 import { DeleteForever, Edit, Visibility, VisibilityOff } from "@material-ui/icons";
 import React from "react";
 import { useCallback, useEffect, useState } from "react";
+import { Redirect } from "react-router-dom";
 import ActionDialog from "../../components/action-dialog";
 import CardTemplate from "../../components/card-template";
 import TextFieldWithError from "../../components/textfield-with-error";
@@ -196,6 +197,7 @@ const Manage = () => {
         active="manage"
         content={
             <section>
+                {(user.role!=="ADM")?(user.role!=="SLR")?<Redirect to="/user/user"/>:<Redirect to="/user/dashboard"/>:null}
                 <Grid container spacing={2}>
                     <Grid item lg={8}>
                         <CardTemplate

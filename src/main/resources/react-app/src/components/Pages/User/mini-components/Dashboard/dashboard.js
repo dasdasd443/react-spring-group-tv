@@ -16,6 +16,7 @@ const Dashboard = () => {
         content={
             // {/* total width 68% gap 3% */}
             <div style={{width:'68%',gap:'1rem',display:'flex',flexWrap:'wrap'}}>
+                {(user.role!=="ADM" && user.role!=="SLR")? <Redirect to="/user/user"/>:null}
                 <SalesStatistics style={{width:'55%'}}/>
                 <DashBoardCalendar style={{width:'42%'}}/>
             </div>
