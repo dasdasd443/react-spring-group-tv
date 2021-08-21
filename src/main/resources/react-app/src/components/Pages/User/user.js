@@ -18,6 +18,7 @@ import Manage from './mini-components/Manage/manage-users.js';
 import Payments from './mini-components/Payments/payments.js';
 import Calendar from './mini-components/Calendar/calendar.js';
 import Category from './mini-components/Category/category.js';
+import Purchases from './mini-components/Purchases/purchases.js';
 
 const User = () => {
     
@@ -42,6 +43,7 @@ const User = () => {
                 <Route path="/user/products" component={SellerProducts}/>
                 <Route path="/user/sell" component={SellProducts}/>
                 <Route path="/user/message" component={Messages}/>
+                <Route path="/user/purchases" component={Purchases}/>
                 </div>
                 <div className = "App">
                     <Footer/>
