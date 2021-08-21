@@ -92,6 +92,9 @@ const Payments = () => {
                         {products.find(product => product.product_id === orderDetail.product_id).product_name}
                     </TableCell>
                     <TableCell>
+                        {orderDetail.quantity}
+                    </TableCell>
+                    <TableCell>
                         {customer.name}
                     </TableCell>
                     <TableCell>
@@ -123,6 +126,9 @@ const Payments = () => {
                                     </TableCell>
                                     <TableCell>
                                         Product Name
+                                    </TableCell>
+                                    <TableCell>
+                                        Quantity
                                     </TableCell>
                                     <TableCell>
                                         Customer Name
