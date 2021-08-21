@@ -2,6 +2,7 @@ package com.rakuten.rest.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import com.rakuten.rest.Model.OrderDetails;
 import com.rakuten.rest.Model.Orders;
@@ -32,11 +33,28 @@ public class OrdersService {
 
         for(int i=0; i<products.size(); i++){
             OrderDetails newOrderDetail = new OrderDetails(
-                products.get(i),
                 savedOrder.getId(),
+                products.get(i),
                 quantity.get(i)
             );
             orderDetailsRepository.save(newOrderDetail);
         }
     }
+
+    public List<Orders> getPurchases(Long user_id) {
+        return ordersRepository.getAllOrdersOfUser(user_id);
+    }
+
+    public List<OrderDetails> getOrderDetails(Long order_id) {
+        return orderDetailsRepository.getOrderDetails(order_id);
+    }
+
+    public List<OrderDetails> getOrderDetailsByProductId(Long product_id) {
+        return orderDetailsRepository.getOrderDetailsByProductId(product_id);
+    }
+
+    public Optional<Orders> getOrder(Long order_id) {
+        return ordersRepository.findById(order_id);
+    }
+    
 }
