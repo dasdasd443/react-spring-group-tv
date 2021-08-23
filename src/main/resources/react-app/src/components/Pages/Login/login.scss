@@ -146,37 +146,7 @@
                 font-size:35px;
                 font-weight: bold;
             }
-            button{
-                border-radius: 6px;
-                height: 48px;
-                outline: none;
-                border: 1px solid grey;
-                color:white;
-                width:100%;
-                display:flex;
-                justify-content: center;
-                align-items: center;
-                gap:1rem;
-            }
-            button i{
-                flex: 1;
-                display: flex;
-                justify-content: flex-end;
-                img{
-                    width:22px;
-                    height: 22px;
-                }
-            }
-            button span{
-                text-transform: uppercase;
-                letter-spacing: 2px;
-                font-size:12px;
-                flex:3;
-                display:flex;
-            }
-            button:nth-child(3){
-                background-color:#000000;
-            }
+           
             button:nth-child(4){
                 background-color:#3A5998;
             }
@@ -247,5 +217,38 @@
                 }
             }
         }
+    }
+}
+
+// login via google/fb
+
+.lfb{
+    background: #3A5998;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    width: 19rem;
+    justify-content: center;
+    gap: 1rem;
+    padding: 10px 0;
+    border-radius: 2px;
+    border: none;
+    font-size: 12pt;
+    box-shadow:rgb(0 0 0 / 24%) 0px 2px 2px 0px;
+
+    &:hover{
+        cursor: pointer;
+        background: #314d85;
+    }
+}
+.lgoogle{
+  padding: 0 50px;
+
+    &:hover{
+        cursor: pointer;
+        background: #f0f1f3;
+    }
+    svg{
+        font-size: 17pt;
     }
 }

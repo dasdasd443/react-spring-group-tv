@@ -5,6 +5,8 @@ import { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import GoogleLogin from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import {FcGoogle} from 'react-icons/all';
 import Header from '../../Header/header';
 import {userLogin} from '../../../store/action/user-action';
 import {oAuthVerification} from '../../../fetchApi';
@@ -113,16 +115,19 @@ const Login = () => {
                             </section>
                             <h1>Sign In</h1>
                             <GoogleLogin
-                            clientId="812366072998-lf9qunffnrevunj4gojv1ounhbkf6s9r.apps.googleusercontent.com"
+                            clientId="812366072998-glbk0a20todjhpnbd2c1mu1ct6it9mba.apps.googleusercontent.com"
                             onSuccess={onLoginSuccess}
                             onFailure={onLoginFailure}
-                            buttonText="Sign In"
+                            buttonText="Login with Google"
                             cookiePolicy={'single_host_origin'}
+                            className="lgoogle"
                             />
                             <FacebookLogin
-                             appId="881859482686487"
+                             appId="359602275625375"
                              fields="name,email,picture"
                              callback={componentClicked}
+                             icon={<FacebookIcon/>}
+                             cssClass="lfb"
                             />
                             {/* <button><i><img src={images.AppleLogo()} alt=""/></i><span>Sign in with apple</span></button> */}
                             {/* <button><i><img src={images.FacebookLogo()} alt=""/></i><span>Sign in with facebook</span></button> */}
