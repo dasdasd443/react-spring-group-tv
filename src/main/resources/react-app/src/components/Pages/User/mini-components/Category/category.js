@@ -8,9 +8,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Delete, Edit } from "@material-ui/icons";
 import React from "react";
+import { Redirect } from "react-router-dom";
 
 
 const Category = () => {
+    const [user, setUser] = useState((localStorage.getItem('user')!== null)? JSON.parse(localStorage.getItem('user')).details: false)
     const [categoryList, setCategoryList] = useState(0);
     const [category,setCategory] = useState('');
     const [categoryDescription,setCategoryDescription] = useState('');
@@ -23,23 +25,28 @@ const Category = () => {
         .then(json => setCategoryList(json));
     })
 
+    const [submit,setSubmit] = useState(false);
+
     const AddCategory = useCallback(async function AddCategory(){
-        await fetch('http://localhost:5000/api/category/add-category',{
-            method:"POST",
-            headers: {
-                'Authorization': (JSON.parse(localStorage.getItem('user')) !== null)? JSON.parse(localStorage.getItem('user')).token: "",
-                "Content-type":"application/json"
-            },
-            body: JSON.stringify({
-                category_name:category,
-                category_description:categoryDescription
+        if(category!=="" && categoryDescription!==""){
+            await fetch('http://localhost:5000/api/category/add-category',{
+                method:"POST",
+                headers: {
+                    'Authorization': (JSON.parse(localStorage.getItem('user')) !== null)? JSON.parse(localStorage.getItem('user')).token: "",
+                    "Content-type":"application/json"
+                },
+                body: JSON.stringify({
+                    category_name:category,
+                    category_description:categoryDescription
+                })
+            }).then(res => {
+                setAddDialog(false);
+                setCategory('');
+                setCategoryDescription('');
+                setNum(Math.random());
             })
-        }).then(res => {
-            setAddDialog(false);
-            setCategory('');
-            setCategoryDescription('');
-            setNum(Math.random());
-        })
+        }
+        setSubmit(true);
     })
 
     useEffect(() => {
@@ -60,6 +67,7 @@ const Category = () => {
     const Row = ({categoryItem}) => {
         const [categoryUpdate,setCategoryUpdate] = useState(categoryItem.category_name);
         const [categoryDescriptionUpdate,setCategoryDescriptionUpdate] = useState(categoryItem.category_description);
+        
 
         const UpdateCategory = useCallback(async function UpdateCategory(){
             let newCategory = categoryItem;
@@ -108,10 +116,21 @@ const Category = () => {
                                 <form>
                                     <Grid container>
                                         <Grid item lg={12}>
-                                            <TextField onChange={(event)=>setCategoryUpdate(event.target.value)} value={categoryUpdate} style={{width:'100%'}} label="Category Name"/>
+                                            <TextField 
+                                            onChange={(event)=>setCategoryUpdate(event.target.value)} 
+                                            value={categoryUpdate} 
+                                            style={{width:'100%'}} 
+                                            label="Category Name"
+                                            error={categoryUpdate==="" && submit}
+                                            />
                                         </Grid>
                                         <Grid item lg={12}>
-                                            <TextField onChange={(event)=>setCategoryDescriptionUpdate(event.target.value)} value={categoryDescriptionUpdate} style={{width:'100%'}} multiline rows={4} label="Category Description"/>
+                                            <TextField 
+                                            onChange={(event)=>setCategoryDescriptionUpdate(event.target.value)} 
+                                            value={categoryDescriptionUpdate} style={{width:'100%'}} 
+                                            multiline 
+                                            rows={4} 
+                                            label="Category Description"/>
                                         </Grid>
                                     </Grid>
                                 </form>
@@ -146,6 +165,7 @@ const Category = () => {
         active="category"
         content={
             <section>
+                {(user.role!=="ADM")? (user.role!=="SLR")?<Redirect to="/user/user"/>:<Redirect to="/user/dashboard"/>:null}
                 <Grid container spacing={2}>
                     <Grid item lg={8}>
                         <CardTemplate
@@ -182,10 +202,25 @@ const Category = () => {
                             <form>
                                 <Grid container spacing={2}>
                                     <Grid item lg={12}>
-                                        <TextField style={{width:'100%'}} label="Category Name" value={category} onChange={(event) => setCategory(event.target.value)}/>
+                                        <TextField 
+                                        style={{width:'100%'}} 
+                                        label="Category Name" 
+                                        value={category} 
+                                        error={(category==="" && submit)}
+                                        helperText={(category==="" && submit)?"Please input a category name":null}
+                                        onChange={(event) => setCategory(event.target.value)}/>
                                     </Grid>
                                     <Grid item lg={12}>
-                                        <TextField style={{width:'100%'}} rows={4} multiline variant="outlined" label="Category Description" value={categoryDescription} onChange={(event) => setCategoryDescription(event.target.value)}/>
+                                        <TextField 
+                                        style={{width:'100%'}} 
+                                        rows={4} 
+                                        multiline 
+                                        variant="outlined" 
+                                        label="Category Description" 
+                                        value={categoryDescription} 
+                                        error={categoryDescription==="" && submit}
+                                        helperText={(categoryDescription==="" && submit)?"Please input the category description":null}
+                                        onChange={(event) => setCategoryDescription(event.target.value)}/>
                                     </Grid>
                                     <Grid item lg={12}>
                                         <AddCategoryButton onClick={()=> setAddDialog(true)}>

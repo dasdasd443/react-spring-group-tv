@@ -1,6 +1,6 @@
 import { faBell, faSearch, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Card, CardContent, CardHeader } from "@material-ui/core";
+import { Card, CardContent, CardHeader, Grid } from "@material-ui/core";
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
 import ViewTemplate from "../../components/view-template";
@@ -15,10 +15,15 @@ const Dashboard = () => {
         active="dashboard"
         content={
             // {/* total width 68% gap 3% */}
-            <div style={{width:'68%',gap:'1rem',display:'flex',flexWrap:'wrap'}}>
-                <SalesStatistics style={{width:'55%'}}/>
-                <DashBoardCalendar style={{width:'42%'}}/>
-            </div>
+            <Grid container spacing={2}>
+                {(user.role!=="ADM" && user.role!=="SLR")? <Redirect to="/user/user"/>:null}
+                <Grid item lg={12}>
+                    <SalesStatistics/>
+                </Grid>
+                <Grid item lg={12}>
+                    <DashBoardCalendar/>
+                </Grid>
+            </Grid>
         }
         />
     )
