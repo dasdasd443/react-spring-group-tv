@@ -9,6 +9,7 @@ import Banner2 from '../../Content/Banner2/banner-2';
 import Categories from '../../Footer/Categories/categories';
 import { useSelector } from 'react-redux';
 import IndexCSS from './index.css';
+import MsgContainer from '../../Messageshome/MsgContainer';
 import { useCallback, useEffect } from 'react';
 
 const Index = () => {
@@ -20,6 +21,7 @@ const Index = () => {
             <div className = "container" style={IndexCSS}>
                 {newsletterelem}
                 <div className="App">
+                <MsgContainer/>
                 <Header/>
                 <span className="line-title"></span>
                 <Title/>

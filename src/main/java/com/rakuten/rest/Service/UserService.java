@@ -38,6 +38,10 @@ public class UserService {
         return userRepository.findusers();
     }
 
+    public List<User> getByRole(String role){
+        return userRepository.findByRole(role);
+    }
+
     public Optional<User> loginUser(User user){
         return userRepository.findUser(user.getEmail(), user.getPassword());
     }

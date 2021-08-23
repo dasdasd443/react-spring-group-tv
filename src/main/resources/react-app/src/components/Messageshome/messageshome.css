@@ -1,0 +1,89 @@
+/* message button */
+.m-btn{
+    position: fixed;
+    background: #f53848;
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 5px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    top: calc(100vh - 43px);
+    z-index: 1;
+    left: calc(100vw - 470px);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.m-btn:hover{
+	cursor: pointer;
+	background: #d62736;
+}
+.m-btn svg{
+	font-size: 18pt;
+}
+
+
+/* message box */
+.mb-con{
+	position: fixed;
+	top: calc(100vh - 300px);
+    z-index: 1;
+    left: calc(100vw - 800px);
+	display: flex;
+	justify-content: center;
+	border: 1px solid #f53848;
+	background: #fff;
+	border-radius: 10px;
+	width: 500px;
+	height: 300px;
+	padding: 0;
+
+}
+.mb-ol{
+	border-right: 1px solid #f53848;
+	width: 30%;
+}
+.mb-ol h3{
+	color: #f53848;
+	padding: 10px;
+}
+.mb-chat{
+width: 70%;
+padding: 10px;
+}
+.mb-head h3{
+	color: #f53848;
+}
+.mb-head svg{
+	color: #f53848;
+	cursor: pointer;
+}
+.mb-head{
+display: flex;
+justify-content: space-between;
+}
+.mb-text{
+	/* border: 1px solid red; */
+	height: 210px;
+}
+.mb-send{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.mb-send svg{
+	color: #f53848;
+	font-size: 20pt;
+	cursor: pointer;
+}
+.mb-input{
+	border: 1px solid #f53848;
+	width: 310px;
+	border-radius: 10px;
+	padding: 8px;
+	resize: none;
+	
+}
+.mb-input:focus{
+	outline: #afafaf;
+}

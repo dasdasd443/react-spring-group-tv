@@ -53,6 +53,11 @@ public class UserController {
         return userService.userList();
     }
 
+    @GetMapping("/users/{role}")
+    public List<User> users(@PathVariable("role") String role){
+        return userService.getByRole(role);
+    }
+
     @PutMapping("/update-user")
     public void updateUser(@RequestBody User user){
         userService.updateUser(user);
