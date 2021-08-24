@@ -37,6 +37,7 @@ public class UserController {
     @GetMapping("/")
     public User hello(){
         return new User(
+                "#ffffff",
                 "Victor Chiong",
                 "12345678",
                 "cjvicro@gmail.com",

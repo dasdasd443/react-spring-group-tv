@@ -14,7 +14,7 @@ export const getUserByRole = async (role) => {
   const response = await fetch(`http://localhost:5000/api/user/users/${role}`, {
     headers: {
       "Content-Type": "application/json",
-      Authorization:
+      "Authorization":
         JSON.parse(localStorage.getItem("user")) !== null
           ? JSON.parse(localStorage.getItem("user")).token
           : "",

@@ -47,6 +47,7 @@ const MessageBox = ({onClick, isMessageBoxOpen}) =>{
 			}
 		}
 	}, [isMessageBoxOpen])
+	
 	return(
 		<div  className="mb-con">
 			<div className="mb-ol">

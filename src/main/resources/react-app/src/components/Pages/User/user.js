@@ -19,7 +19,7 @@ import Payments from './mini-components/Payments/payments.js';
 import Calendar from './mini-components/Calendar/calendar.js';
 import Category from './mini-components/Category/category.js';
 import Purchases from './mini-components/Purchases/purchases.js';
-
+import './user.css'
 const User = () => {
     
     fetch('http://localhost:5000/',{
@@ -29,6 +29,7 @@ const User = () => {
     }).then(res => console.log(res.text()));
     return (
             <div className = "container">
+                <div className="bg">
                 <div className="App">
                 <Header/>
                 <span className="line-title"></span>
@@ -47,6 +48,7 @@ const User = () => {
                 </div>
                 <div className = "App">
                     <Footer/>
+                </div>
                 </div>
             </div>
     );

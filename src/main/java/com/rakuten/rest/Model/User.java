@@ -11,6 +11,7 @@ import javax.persistence.*;
 public class User {
     private @Id
     @GeneratedValue @Column(name="id") long id;
+    private @Column(name="color", length=50) String color;
     private @Column(name="name", length=50) String name;
     private @Column(name="password", length=50) String password;
     private @Column(name="email",unique = true, length=50) String email;
@@ -26,15 +27,16 @@ public class User {
 
     @Override
     public String toString() {
-        return "{\"id\":\""+id+"\",\"name\":\""+name+"\",\"email\":\""+email+"\",\"billing_address\":\""+billing_address+"\",\"shipping_address\":\""+shipping_address+"\",\"role\":\""+role+"\",\"phone\":\""+phone+"\",\"seller_name\":\""+seller_name+"\"}";
+        return "{\"id\":\""+id+"\",\"name\":\""+name+"\",\"email\":\""+email+"\",\"billing_address\":\""+billing_address+"\",\"shipping_address\":\""+shipping_address+"\",\"role\":\""+role+"\",\"phone\":\""+phone+"\",\"seller_name\":\""+seller_name+"\",\"color\":\""+color+"\"}";
     }
 
 
     
 
-    public User(long id, String name, String password, String email, String role, String phone, 
+    public User(long id,String color, String name, String password, String email, String role, String phone,
                 String seller_name, String token) {
         this.id = id;
+        this.color = color;
         this.name = name;
         this.password = password;
         this.email = email;
@@ -46,8 +48,9 @@ public class User {
 
     
 
-    public User(String name, String password, String email, String billing_address, String shipping_address,
+    public User(String color, String name, String password, String email, String billing_address, String shipping_address,
                 String seller_name, String role, String phone) {
+        this.color = color;
         this.name = name;
         this.password = password;
         this.email = email;
@@ -62,6 +65,10 @@ public class User {
         return id;
     }
 
+    public String getColor() {
+        return color;
+    }
+
     public String getName() {
         return name;
     }
@@ -72,6 +79,10 @@ public class User {
 
     public String getEmail() {
         return email;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public void setName(String name) {

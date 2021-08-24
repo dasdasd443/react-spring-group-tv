@@ -24,6 +24,7 @@ public class UserService {
 
     public User userData() {
         return new User(
+                "#FFFFFF",
                 "Victor Chiong",
                 "12345678",
                 "cjvicro@gmail.com",
@@ -48,6 +49,7 @@ public class UserService {
 
     public String registerUser(User user){
         User user1 = new User(
+                user.getColor(),
                 user.getName(),
                 user.getPassword(),
                 user.getEmail(),
@@ -70,6 +72,7 @@ public class UserService {
     public void updateUser(User user) {
         userRepository.findById(user.getId()).map(
             newuser->{
+                newuser.setColor(user.getColor());
                 newuser.setEmail(user.getEmail());
                 newuser.setName(user.getName());
                 newuser.setPhone(user.getPhone());

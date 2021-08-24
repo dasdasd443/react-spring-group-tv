@@ -4,6 +4,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faEye} from '@fortawesome/free-solid-svg-icons';
 import Images from '../../exportFiles/exportImages';
 import { useCallback, useState } from 'react';
+import { generateColor } from '../../../lib/generateColor';
 let images = new Images();
 
 const Signup = () => {
@@ -25,12 +26,14 @@ const Signup = () => {
         const email = document.querySelector("#email").value;
         const password = document.querySelector("#password").value;
         const name = document.querySelector("#fullname").value;
+        const color = generateColor();
         const seller = document.querySelector("#seller").checked;
         const response = await fetch('http://localhost:5000/api/user/register/',
             {mode:'cors',
             method:'POST',
             headers: new Headers({'content-type':'application/json'}),
             body: JSON.stringify({
+                color,
                 name,
                 email,
                 password,
