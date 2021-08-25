@@ -27,14 +27,13 @@
         }
         &--img{
             display:flex;
-            place-items: center;
             justify-content: center;
-            border: 1px solid lightgray;
-            padding: 60px 10px;
             width:200px;
+            height:200px;
             img{
-                max-width:80%;
-                max-height:80%;
+                object-fit: cover;
+                max-width:100%;
+                max-height:100%;
             }
         }
 
@@ -55,7 +54,7 @@
         }
         &--smallDetails{
             display: flex;
-            margin: 30px 0;
+            margin: 10px 0;
             align-items: center;
 
             &--str{
@@ -86,7 +85,10 @@
         &--p{
             letter-spacing: 1px;
             line-height: 1.6;
-            margin: 20px 0;
+            margin: 10px 0;
+            height:70px;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         &--buttons{
             display: flex;

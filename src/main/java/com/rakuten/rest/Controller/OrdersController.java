@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(path="api/orders")
-@CrossOrigin(origins="http://localhost:3000", allowedHeaders = "*")
+@CrossOrigin(origins="https://localhost:3000", allowedHeaders = "*")
 public class OrdersController {
     
 

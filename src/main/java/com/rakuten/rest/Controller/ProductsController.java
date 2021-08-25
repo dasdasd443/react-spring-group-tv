@@ -29,7 +29,7 @@ import java.util.UUID;
 @Controller
 @RestController
 @RequestMapping(path="/product")
-@CrossOrigin(origins="http://localhost:3000", allowedHeaders = "*")
+@CrossOrigin(origins="https://localhost:3000", allowedHeaders = "*")
 public class ProductsController {
 
     private final ProductsService productsService;

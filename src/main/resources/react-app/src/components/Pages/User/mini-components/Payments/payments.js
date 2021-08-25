@@ -1,6 +1,6 @@
 import { faBell, faSearch, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Card, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@material-ui/core";
+import { Card, CircularProgress, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@material-ui/core";
 import React, { useCallback, useEffect } from "react";
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
@@ -98,7 +98,7 @@ const Payments = () => {
                         {customer.name}
                     </TableCell>
                     <TableCell>
-                        {order.order_date}
+                        {(order.order_date!==undefined)?order.order_date.split("T")[0]:<CircularProgress/>}
                     </TableCell>
                     <TableCell>
                         {order.order_status}
@@ -121,22 +121,22 @@ const Payments = () => {
                         <TableContainer>
                             <TableHead>
                                 <TableRow>
-                                    <TableCell>
+                                    <TableCell style={{width:'12%'}}>
                                         Order ID
                                     </TableCell>
-                                    <TableCell>
+                                    <TableCell style={{width:'23%'}}>
                                         Product Name
                                     </TableCell>
-                                    <TableCell>
+                                    <TableCell style={{width:'5%'}}>
                                         Quantity
                                     </TableCell>
-                                    <TableCell>
+                                    <TableCell style={{width:'25%'}}>
                                         Customer Name
                                     </TableCell>
-                                    <TableCell>
+                                    <TableCell style={{width:'25%'}}>
                                         Date
                                     </TableCell>
-                                    <TableCell>
+                                    <TableCell style={{width:'15%'}}>
                                         Status
                                     </TableCell>
                                 </TableRow>

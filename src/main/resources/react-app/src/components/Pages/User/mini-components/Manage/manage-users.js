@@ -85,7 +85,7 @@ const Manage = () => {
                     <TableCell>{userCell.role}</TableCell>
                     <TableCell>
                         <IconButton aria-label="expand row" size="small" onClick={()=>setUpdateDialog(true)}>
-                            <Edit/>
+                            <Edit style={{color:'#FD2E2E'}}/>
                         </IconButton>
                         <ActionDialog
                         open={updateDialog}
@@ -108,7 +108,7 @@ const Manage = () => {
                     </TableCell>
                     <TableCell>
                         <IconButton aria-label="expand row" size="small" onClick={()=>setDeleteDialog(true)}>
-                            <DeleteForever />
+                            <DeleteForever style={{color:'#FD2E2E'}}/>
                         </IconButton>
                         <ActionDialog
                         open={deleteDialog}
@@ -199,7 +199,7 @@ const Manage = () => {
             <section>
                 {(user.role!=="ADM")?(user.role!=="SLR")?<Redirect to="/user/user"/>:<Redirect to="/user/dashboard"/>:null}
                 <Grid container spacing={2}>
-                    <Grid item lg={8}>
+                    <Grid item lg={12}>
                         <CardTemplate
                         title={<span>Users L<span style={{color:'#FD2E2E'}}>ist</span></span>}
                         content={

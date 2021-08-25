@@ -6,7 +6,7 @@ import {addToFavorites, removeFromFavorites} from '../../store/action/favorites-
 import {useCallback, useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import './best-seller-card.css';
-import { Card, CardContent, CardMedia } from '@material-ui/core';
+import { Card, CardContent, CardMedia, Grid } from '@material-ui/core';
 const BestSellerCard = ({product ,hotornot}) => {
     const dispatch = useDispatch();
     const productList = useSelector(state => state.productList);
@@ -55,21 +55,30 @@ const BestSellerCard = ({product ,hotornot}) => {
                 </div>
             </section>
             <section className="bs-category-gallery--one--box--details">
-                <CardContent>
-                    <div className="bs-category-gallery--one--box--details--price">
-                        <p className="bs-category-gallery--one--box--details--price--enabled" >${product.price.toLocaleString(undefined,{minimumFractionDigits:2})}</p>
-                        <p className="bs-category-gallery--one--box--details--price--disabled">{(product.discount_price!== 0)?`$${product.price - product.discount_price}`:null}</p>
-                    </div>
-                    <h4 className="bs-category-gallery--one--box--details--h4"><Link to={`/product-item/${product.product_id}`}>{product.product_name}</Link></h4>
-                    <small>Sold by: {(seller!==0)? (seller.seller_name!=='null' && seller.seller_name!=="")?seller.seller_name:seller.name:null}</small>
-                    <div className="bs-category-gallery--one--box--details--stars">
-                    <FontAwesomeIcon icon={faStar}/>
-                        <FontAwesomeIcon icon={faStar}/>
-                        <FontAwesomeIcon icon={faStar}/>
-                        <FontAwesomeIcon icon={faStar}/>
-                        <FontAwesomeIcon icon={faStar} className = "bs-category-gallery--one--box--details--stars--last"/>
-                    </div>
-                    
+                <CardContent style={{width:'300px'}}>
+                    <Grid container spacing={1}>
+                        <Grid item xs={12}>
+                            <div className="bs-category-gallery--one--box--details--price">
+                                <p className="bs-category-gallery--one--box--details--price--enabled" >${product.price.toLocaleString(undefined,{minimumFractionDigits:2})}</p>
+                                <p className="bs-category-gallery--one--box--details--price--disabled">{(product.discount_price!== 0)?`$${product.price - product.discount_price}`:null}</p>
+                            </div>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <h4 className="bs-category-gallery--one--box--details--h4"><Link to={`/product-item/${product.product_id}`}>{product.product_name}</Link></h4>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <small>Sold by: {(seller!==0)? (seller.seller_name!=='null' && seller.seller_name!=="")?seller.seller_name:seller.name:null}</small>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <div className="bs-category-gallery--one--box--details--stars">
+                                <FontAwesomeIcon icon={faStar}/>
+                                <FontAwesomeIcon icon={faStar}/>
+                                <FontAwesomeIcon icon={faStar}/>
+                                <FontAwesomeIcon icon={faStar}/>
+                                <FontAwesomeIcon icon={faStar} className = "bs-category-gallery--one--box--details--stars--last"/>
+                            </div>
+                        </Grid>
+                    </Grid>
                 </CardContent>
             </section>
         </Card>

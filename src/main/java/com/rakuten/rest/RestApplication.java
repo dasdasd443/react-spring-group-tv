@@ -38,7 +38,7 @@ public class RestApplication {
 				.antMatchers(HttpMethod.GET, "/api/user/get-user/**").permitAll()
 				.antMatchers(HttpMethod.GET, "/api/category/**").permitAll()
 				.antMatchers(HttpMethod.GET, "/product/get-image/**").permitAll()
-        .antMatchers(HttpMethod.GET, "/product/all").permitAll()
+        		.antMatchers(HttpMethod.GET, "/product/all").permitAll()
 				.antMatchers(HttpMethod.GET, "/product/**").permitAll()
 				.anyRequest().authenticated().and().sessionManagement()
 					.sessionCreationPolicy(SessionCreationPolicy.STATELESS);

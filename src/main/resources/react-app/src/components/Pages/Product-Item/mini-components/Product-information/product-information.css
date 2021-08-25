@@ -71,11 +71,11 @@
   display: -ms-flexbox;
   display: flex;
   font-size: 10pt;
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
 .items-left-details-productDetails-reviewDetails svg {
-  color: yellow;
+  color: #fec73d;
 }
 
 .items-left-details-productDetails-reviewDetails--reviews {
@@ -104,7 +104,7 @@
 }
 
 .stock--label {
-  margin-right: 50px;
+  margin-right: 10px;
   font-weight: bold;
 }
 
@@ -121,7 +121,7 @@
 
 .category--label {
   font-weight: bold;
-  margin-right: 60px;
+  margin-right: 10px;
 }
 
 .category--value {

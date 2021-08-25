@@ -10,6 +10,7 @@ let images = new Image();
 const Newsletter = () => {
     const dispatch = useDispatch();
     const newsletterdisplay = useCallback(()=>{
+        localStorage.setItem("newsletter",1);
         dispatch(setNewsletter())
     });
     const close = useCallback(() => {

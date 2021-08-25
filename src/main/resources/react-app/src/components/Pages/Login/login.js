@@ -101,7 +101,7 @@ const Login = () => {
                         <section className="login-container--text__text-container">
                             <Link to="/">
                                 <section className="login-container--text__text-container--title">
-                                    <h1>RAKU</h1>
+                                    <h1>ONESTOP</h1>
                                     <h1>TECH</h1>
                                 </section>
                             </Link>
@@ -115,7 +115,7 @@ const Login = () => {
                             </section>
                             <h1>Sign In</h1>
                             <GoogleLogin
-                            clientId="812366072998-glbk0a20todjhpnbd2c1mu1ct6it9mba.apps.googleusercontent.com"
+                            clientId="1014276466562-dsbn0co07i8t0cpvsb02hbdog24o644g.apps.googleusercontent.com"
                             onSuccess={onLoginSuccess}
                             onFailure={onLoginFailure}
                             buttonText="Login with Google"

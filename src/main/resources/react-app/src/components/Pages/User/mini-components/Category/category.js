@@ -107,7 +107,7 @@ const Category = () => {
                     <TableCell>{categoryItem.category_description}</TableCell>
                     <TableCell>
                         <IconButton aria-label="expand row" size="small" onClick={()=>setUpdateDialog(true)}>
-                            <Edit/>
+                            <Edit style={{color:'#FD2E2E'}}/>
                         </IconButton>
                         <ActionDialog
                             open={updateDialog}
@@ -143,7 +143,7 @@ const Category = () => {
                     </TableCell>
                     <TableCell>
                         <IconButton aria-label="expand row" size="small" onClick={()=>setDeleteDialog(true)}>
-                            <Delete/>
+                            <Delete style={{color:'#FD2E2E'}}/>
                         </IconButton>
                         <ActionDialog
                             open={deleteDialog}
@@ -167,7 +167,7 @@ const Category = () => {
             <section>
                 {(user.role!=="ADM")? (user.role!=="SLR")?<Redirect to="/user/user"/>:<Redirect to="/user/dashboard"/>:null}
                 <Grid container spacing={2}>
-                    <Grid item lg={8}>
+                    <Grid item lg={12}>
                         <CardTemplate
                         title={<span>Categories L<span style={{color:'#FD2E2E'}}>ist</span></span>}
                         content={
@@ -195,7 +195,7 @@ const Category = () => {
                         }
                         />
                     </Grid>
-                    <Grid item lg={4}>
+                    <Grid item lg={8}>
                         <CardTemplate
                         title={<span>Add Cate<span style={{color:'#FD2E2E'}}>gory</span></span>}
                         content={

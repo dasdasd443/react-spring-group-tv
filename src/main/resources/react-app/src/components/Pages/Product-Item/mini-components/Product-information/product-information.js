@@ -8,6 +8,7 @@ import { SolarSystemLoading } from 'react-loadingg';
 import { addToCart } from '../../../../../store/action/store-actions';
 import { addToFavorites, removeFromFavorites } from '../../../../../store/action/favorites-action';
 import { setCurrentProduct } from '../../../../../store/action/current-product-actions';
+import { CircularProgress } from '@material-ui/core';
 const ProductInformation = ({id}) => {
     const products = useSelector(state => state.productList);
     const checkoutList = useSelector(state => state.checkoutProducts);
@@ -81,7 +82,7 @@ const ProductInformation = ({id}) => {
                         </div>
                         <hr/>
                         <div className="bs-category-gallery--one--box--price items-container-menus-content--price price-bolder">
-                            <p className="bs-category-gallery--one--box--price--enabled price-bolder-red" >${curProduct.price.toFixed(2)}</p>
+                            <p className="bs-category-gallery--one--box--price--enabled price-bolder-red" >${curProduct.price.toLocaleString(undefined, {minimumFractionDigits:2})}</p>
                             <p className="bs-category-gallery--one--box--price--disabled">{(curProduct.discount_price!==0)?`$${curProduct.price - curProduct.discount_price}`:null}</p>
                         </div>
                         
@@ -128,7 +129,7 @@ const ProductInformation = ({id}) => {
                         {curProduct.description}
                     </p>
                 </div>
-                </div>: <SolarSystemLoading/>}
+                </div>: <CircularProgress/>}
             </section>
     );
 }

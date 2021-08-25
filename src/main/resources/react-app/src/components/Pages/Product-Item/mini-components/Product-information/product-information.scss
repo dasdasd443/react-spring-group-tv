@@ -5,7 +5,6 @@
 }
 .items-left-details{
     display: flex;
-
     &-h2{
         font-weight: bolder;
     }
@@ -59,10 +58,10 @@
         &-reviewDetails{
             display: flex;
             font-size: 10pt;
-            margin: 20px 0;
+            margin: 10px 0;
     
             svg{
-                color: yellow;
+                color: #fec73d;
             }
     
             &--reviews{
@@ -89,7 +88,7 @@
     margin: 20px 0;
 
     &--label{
-        margin-right: 50px;
+        margin-right: 10px;
         font-weight: bold;
     }
     &--value{
@@ -103,7 +102,7 @@
 
     &--label{
         font-weight: bold;
-        margin-right: 60px;
+        margin-right: 10px;
     }
     &--value{
         color: #7a7a7a;

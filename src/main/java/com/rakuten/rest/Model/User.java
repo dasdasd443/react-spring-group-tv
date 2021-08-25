@@ -18,7 +18,7 @@ public class User {
     private @Column(name="shipping_address", length=100) String shipping_address;
     private @Column(name="role", length=3) String role;
     private @Column(name="phone",length=11) String phone;
-    private @Column(name="seller_name", length=11) String seller_name;
+    private @Column(name="seller_name", length=50) String seller_name;
     private String token;
 
     public User() {

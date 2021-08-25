@@ -3,6 +3,7 @@ import Images from '../../../../exportFiles/exportImages';
 import { useEffect, useCallback, useState } from 'react';
 import SolarSystemLoading from 'react-loadingg/lib/SolarSystemLoading';
 import BestSellerCard from '../../../../mini-component/best-seller-card';
+import { Card } from '@material-ui/core';
 let images = new Images();
 const ProductBestSellers = () => {
     const [products,setProducts] = useState(0);
@@ -34,14 +35,14 @@ const ProductBestSellers = () => {
                         <div className="items-right-slides-button"></div>
                         <div className="items-right-slides-button"></div>
                     </div>
-                    <div className="items-right-ads">
+                    <Card className="items-right-ads" style={{background:'#c1c8ce'}}>
                         <h2 className="items-right-ads--h2">GoPro Hero 6</h2>
                         <p className="items-right-ads--p">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                         <p className="items-right-ads--price">$299</p>
                         <figure>
                         <img src={images.GoPro()} alt=""/>
                         </figure>
-                    </div>
+                    </Card>
                 </section>
     );
 }

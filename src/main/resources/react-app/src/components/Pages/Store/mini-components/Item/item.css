@@ -46,18 +46,18 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  place-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  border: 1px solid lightgray;
-  padding: 60px 10px;
   width: 200px;
+  height: 200px;
 }
 
 .items-container-menus-boxes--img img {
-  max-width: 80%;
-  max-height: 80%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .items-container-menus-content {
@@ -83,7 +83,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: 30px 0;
+  margin: 10px 0;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -122,7 +122,10 @@
 .items-container-menus-content--p {
   letter-spacing: 1px;
   line-height: 1.6;
-  margin: 20px 0;
+  margin: 10px 0;
+  height: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .items-container-menus-content--buttons {

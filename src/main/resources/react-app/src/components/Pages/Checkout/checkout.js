@@ -64,7 +64,7 @@ const Checkout = () => {
                                 <span>Price</span>
                             </section>
                             <hr/>
-                            <div>
+                            <div style={{padding:'20px 0'}}>
                             {(productsElement.length == 0)? <span>Your cart is Empty! Click <Link to='/store'>here</Link> to shop!</span>: productsElement}
                             </div>
                         </div>

@@ -128,15 +128,15 @@ const SellerProducts = () => {
                     <TableRow checkboxSelection>
                         <TableCell align="left"></TableCell>
                         <TableCell align="left">{product.product_name}</TableCell>
-                        <TableCell align="left">{product.created_date}</TableCell>
+                        <TableCell align="left">{product.created_date.split("T")[0]}</TableCell>
                         <TableCell align="left">
                             <IconButton aria-label="expand row" size="small" onClick={() => setDetailsDropdown(!detailsDropdown)}>
-                                {detailsDropdown ? <KeyboardArrowUpOutlined /> : <KeyboardArrowDownOutlined />}
+                                {detailsDropdown ? <KeyboardArrowUpOutlined style={{color:'#FD2E2E'}}/> : <KeyboardArrowDownOutlined style={{color:'#FD2E2E'}}/>}
                             </IconButton>
                         </TableCell>
                         <TableCell align="left">
-                            <IconButton aria-label="expand row" size="small" onClick={() => setDeleteDialog(true)}>
-                                <DeleteForever />
+                            <IconButton  aria-label="expand row" size="small" onClick={() => setDeleteDialog(true)}>
+                                <DeleteForever  style={{color:'#FD2E2E'}}/>
                             </IconButton>
                         </TableCell>
                     </TableRow>

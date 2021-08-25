@@ -94,7 +94,7 @@ const Purchases = () => {
                     </TableCell>
                     <TableCell>
                         <IconButton aria-label="expand row" size="small" onClick={() => setOrderDetailsDropdown(!orderDetailsDropdown)}>
-                            {orderDetailsDropdown ? <KeyboardArrowUpOutlined /> : <KeyboardArrowDownOutlined />}
+                            {orderDetailsDropdown ? <KeyboardArrowUpOutlined style={{color:'#FD2E2E'}} /> : <KeyboardArrowDownOutlined style={{color:'#FD2E2E'}} />}
                         </IconButton>
                     </TableCell>
                 </TableRow>

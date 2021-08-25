@@ -36,7 +36,7 @@ const Item = ({product}) => {
         dispatch(addToFavorites(product));
     })
     return (
-        <div>
+        <div style={{width:'100%'}}>
             <div className="items-container-menus-boxes">
                 <figure className="items-container-menus-boxes--img">
                     <img src={`http://localhost:5000/product/get-image/${product.product_id}/${product.image}`} alt=""/>
@@ -56,8 +56,8 @@ const Item = ({product}) => {
                     </div>
                     <hr className="hr-properties"/>
                     <div className="bs-category-gallery--one--box--price items-container-menus-content--price">
-                        <p className="bs-category-gallery--one--box--price--enabled" >${product.price}</p>
-                        <p className="bs-category-gallery--one--box--price--disabled">$599</p>
+                        <p className="bs-category-gallery--one--box--price--enabled" >${product.price.toLocaleString(undefined, {minimumFractionDigits:2})}</p>
+                        <p className="bs-category-gallery--one--box--price--disabled"></p>
                     </div>
                     <p className="items-container-menus-content--p">{product.description || defaultText}
                     </p>

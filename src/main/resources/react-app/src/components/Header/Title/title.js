@@ -6,7 +6,7 @@ const Title = () => {
     return (
         <section className="title" style={TitleCSS}>
             <div>
-                <h1>Raku</h1>
+                <h1>Onestop</h1>
                 <h1>tech</h1>
             </div>
             <nav>

@@ -5,6 +5,7 @@ import {useEffect, useState, useCallback} from 'react';
 import {setInitialProducts} from '../../../../../store/action/store-actions';
 import {SolarSystemLoading} from 'react-loadingg';
 import './item-store-list.css';
+import { CircularProgress } from '@material-ui/core';
 let images = new Images();
 const ItemStoreList = ({load}) => {
     const productList = useSelector(state => state.productList);
@@ -56,7 +57,7 @@ const ItemStoreList = ({load}) => {
                 </div>
             </div>
             <div className="items-container-menus">
-                {(productListElements!== 0 )? productListElements: <SolarSystemLoading/>}
+                {(productListElements!== 0 )? productListElements: <CircularProgress/>}
             </div>
 
             <div className="items-container-menuNumbers">

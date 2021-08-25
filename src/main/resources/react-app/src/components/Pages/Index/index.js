@@ -12,9 +12,9 @@ import IndexCSS from './index.css';
 import { useCallback, useEffect } from 'react';
 
 const Index = () => {
-    const newsletterDisplay = useSelector( state => state.newsletter);
-    const newsletterelem = (newsletterDisplay === 1)?"":<Newsletter classsName="newsletter"/>;
-
+    const newsletterDisplay = localStorage.getItem("newsletter");
+    const newsletterelem = (parseInt(newsletterDisplay) === 1)?null:<Newsletter classsName="newsletter"/>;
+    
 
     return (
             <div className = "container" style={IndexCSS}>

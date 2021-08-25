@@ -7,6 +7,7 @@ import {setInitialProducts} from '../../../store/action/store-actions';
 import {useState, useEffect,useCallback} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {SolarSystemLoading} from 'react-loadingg';
+import { CircularProgress } from '@material-ui/core';
 
 let images = new Images();
 const BestSeller = ({load}) => {
@@ -63,7 +64,7 @@ const BestSeller = ({load}) => {
             <div className="bs-category-gallery">
                 
                 <div className="bs-category-gallery--one">
-                    {(productsElement !== 0)? productsElement: <SolarSystemLoading/>}
+                    {(productsElement !== 0)? productsElement: <CircularProgress/>}
                 </div>
             </div>
         

@@ -12,7 +12,7 @@ const ViewTemplate = ({content,active}) => {
         <section>
             {(user === false)? <Redirect to="/login"/>:null}
             <div className="content-header">
-                <div><span>RAKU</span><span style={{color: "#FD2E2E"}}>TECH</span><span> {(user.role==='SLR')?"SELLER":(user.role==='ADM')?"ADMIN":"USER"}</span></div>
+                <div><span>ONESTOP</span><span style={{color: "#FD2E2E"}}>TECH</span><span> {(user.role==='SLR')?"SELLER":(user.role==='ADM')?"ADMIN":"USER"}</span></div>
                 <div className="content-header__icons">
                     <div><FontAwesomeIcon icon={faSearch}/></div>
                     <div><FontAwesomeIcon icon={faBell}/></div>
