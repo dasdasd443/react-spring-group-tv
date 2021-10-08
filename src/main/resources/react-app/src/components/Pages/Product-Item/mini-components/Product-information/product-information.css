@@ -7,9 +7,6 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
 }
 
 .items-left-details-h2 {
@@ -29,8 +26,8 @@
 }
 
 .items-left-details--productImages--largeView img {
-  -o-object-fit: fill;
-     object-fit: fill;
+  -o-object-fit: cover;
+     object-fit: cover;
   max-height: 80%;
   max-width: 80%;
 }

@@ -10,7 +10,7 @@ const Navigation = () => {
                 <span>/</span>
                 <Link to='/store'>Accessories</Link>
                 <span>/</span>
-                <span>{curProd.title || curProd.itemName}</span>
+                <span>{curProd.product_name}</span>
             </section>
         </section>
     );

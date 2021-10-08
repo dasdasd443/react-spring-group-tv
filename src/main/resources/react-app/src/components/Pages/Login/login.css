@@ -205,6 +205,7 @@
 .login-container__login--card .separator span {
   position: absolute;
   top: -7px;
+  left: 143px;
   background: white;
   padding: 0 10px;
   text-transform: uppercase;
@@ -213,58 +214,6 @@
 .login-container__login--card h1 {
   font-size: 35px;
   font-weight: bold;
-}
-
-.login-container__login--card button {
-  border-radius: 6px;
-  height: 48px;
-  outline: none;
-  border: 1px solid grey;
-  color: white;
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 1rem;
-}
-
-.login-container__login--card button i {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-}
-
-.login-container__login--card button i img {
-  width: 22px;
-  height: 22px;
-}
-
-.login-container__login--card button span {
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 12px;
-  -webkit-box-flex: 3;
-      -ms-flex: 3;
-          flex: 3;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.login-container__login--card button:nth-child(3) {
-  background-color: #000000;
 }
 
 .login-container__login--card button:nth-child(4) {
@@ -344,5 +293,61 @@
   color: #233975;
   font-weight: bold;
   text-decoration: none;
+}
+
+.lfb {
+  background: #3A5998;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 19rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 1rem;
+  padding: 10px 0;
+  border-radius: 4px;
+  border: none;
+  font-size: 12pt;
+}
+
+.lfb:hover {
+  cursor: pointer;
+  background: #314d85;
+}
+
+.lgoogle {
+  background: #fbfbfb;
+  color: #383838;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 19rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 1rem;
+  padding: 10px 0;
+  border-radius: 10px;
+  border: none;
+  font-size: 12pt;
+  -webkit-box-shadow: 0px 9px 30px -7px rgba(0, 0, 0, 0.74);
+          box-shadow: 0px 9px 30px -7px rgba(0, 0, 0, 0.74);
+}
+
+.lgoogle:hover {
+  cursor: pointer;
+  background: #f0f1f3;
+}
+
+.lgoogle svg {
+  font-size: 17pt;
 }
 /*# sourceMappingURL=login.css.map */

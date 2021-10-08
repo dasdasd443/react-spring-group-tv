@@ -59,6 +59,29 @@ public class UserService {
         return user1.toString();
     }
 
+    public Optional<User> getUser(Long id) {
+        return userRepository.findById(id);
+    }
+
+    public void updateUser(User user) {
+        userRepository.findById(user.getId()).map(
+            newuser->{
+                newuser.setEmail(user.getEmail());
+                newuser.setName(user.getName());
+                newuser.setPhone(user.getPhone());
+                newuser.setRole(user.getRole());
+                newuser.setSeller_name(user.getSeller_name());
+                newuser.setShipping_address(user.getShipping_address());
+                newuser.setBilling_address(user.getBilling_address());
+                return userRepository.save(newuser);
+            }
+        );
+    }
+
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
+    }
+
 
 }
 

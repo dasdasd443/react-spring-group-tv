@@ -1,5 +1,5 @@
 .user-menu-container{
-    width:350px;
+    width:100%;
     display:flex;
     flex-direction: column;
     border-radius:20px;
@@ -12,19 +12,30 @@
         .messages{
             display:flex;
             justify-content: space-between;
-            
+            align-items: center;
         }
-        div{
+        button{
+            width:100%;
             padding:20px 20px 20px 15px;
+            border-radius:25px;
+            transition: all .2s;
+        }
+        .inactive:hover{
+            background-color: #fd2e2e0f;
+        }
+        .inactive:active{
+            background: #fd2e2e2f;
         }
         a{
             color:#52575D;
             text-decoration: none;
         }
         .active{
-            background-color: #fd2e2e1c;
+            background-color: #fd2e2e2f;
+            
             border-radius:25px;
         }
+
     }
     .user-info{
         display:flex;

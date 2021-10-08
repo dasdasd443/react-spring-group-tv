@@ -20,8 +20,7 @@ const Header = (props) =>
         window.location.href = "/";
     })
     const [loggedIn,setLoggedIn] = useState((localStorage.getItem('user')!==null)? JSON.parse(localStorage.getItem('user')): false);
-    console.log(loggedIn)
-    let user = (loggedIn !== false)? <div style={{display:"flex", gap: "1rem"}}> <Link to="/user" className="user">{loggedIn.details.email}</Link> | <Link to="/" className="user" onClick={LogoutUser}>Logout</Link></div>: <Link to="/login" className="user">My profile</Link>;
+    let user = (loggedIn !== false)? <div style={{display:"flex", gap: "1rem"}}> <Link to="/user/dashboard" className="user">{loggedIn.details.email}</Link> | <Link to="/" className="user" onClick={LogoutUser}>Logout</Link></div>: <Link to="/login" className="user">Login</Link>;
     
     return (
         <section className="header" style={HeaderCSS}>
@@ -42,7 +41,7 @@ const Header = (props) =>
                 <section className="header__account--item">
                     <Link to="/checkout"><FontAwesomeIcon icon={faShoppingBasket} />
                         <span>{numItems} Items</span>
-                        <small>${subTotal.toFixed(2)}</small>
+                        <small>${subTotal.toLocaleString(undefined, {minimumFractionDigits:2})}</small>
                     </Link>    
                 </section>
                 <section className="header__account--item">

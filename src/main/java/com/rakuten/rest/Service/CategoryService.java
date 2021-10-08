@@ -22,4 +22,23 @@ public class CategoryService {
     public List<Category> getCategories(){
         return categoryRepository.findAll();
     }
+
+    public void addCategory(Category category) {
+        categoryRepository.save(category);
+    }
+
+    public void deleteCategory(Long id) {
+        categoryRepository.deleteById(id);
+    }
+
+    public void updateCategory(Category category) {
+        categoryRepository.findById(category.getId()).map(
+            newCategory -> {
+                newCategory.setId(category.getId());
+                newCategory.setCategory_name(category.getCategory_name());
+                newCategory.setCategory_description(category.getCategory_description());
+                return categoryRepository.save(newCategory);
+            }
+        );
+    }
 }

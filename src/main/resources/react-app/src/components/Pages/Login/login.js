@@ -3,8 +3,13 @@ import Image from '../../exportFiles/exportImages';
 import {Link, Redirect} from 'react-router-dom';
 import { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import GoogleLogin from 'react-google-login';
+import FacebookLogin from 'react-facebook-login';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import {FcGoogle} from 'react-icons/all';
 import Header from '../../Header/header';
 import {userLogin} from '../../../store/action/user-action';
+import {oAuthVerification} from '../../../fetchApi';
 let images = new Image();
 const Login = () => {
     const dispatch = useDispatch();
@@ -22,9 +27,9 @@ const Login = () => {
         const response = await fetch('http://localhost:5000/api/user/login', {
             mode:'cors',
             method:'POST',
-            headers: new Headers({
+            headers:{
                 'content-type':'application/json',
-            }),
+            },
             body: JSON.stringify({
                 email,
                 password,
@@ -50,6 +55,40 @@ const Login = () => {
     const Background = {
         backgroundImage: `url(${images.Background()})`
     }
+
+    const onLoginSuccess = (res) => {
+        console.log('12',res.profileObj)
+        oAuthVerification({email: res.profileObj.email})
+        .then(data =>{
+            if(data.jwt) {
+                localStorage.setItem('user', JSON.stringify({
+                    login:true,
+                    token: data.jwt,
+                    details: {email: res.profileObj.email}
+                }));
+                window.location.pathname='/';
+            }
+        });
+      }
+    
+      const onLoginFailure = (res) => {
+        console.log('Login Failed:', res);
+    };
+
+    const componentClicked = (res) =>{
+        oAuthVerification({email: res.email})
+        .then(data =>{
+            if(data.jwt) {
+                localStorage.setItem('user', JSON.stringify({
+                    login:true,
+                    token: data.jwt,
+                    details: {email: res.email}
+                }));
+                window.location.pathname="/"
+            }
+        });
+    }
+
     return (
         
         <section style={LoginCSS}>
@@ -75,8 +114,23 @@ const Login = () => {
                                 <i className="fas fa-arrow-left backarrow"></i>
                             </section>
                             <h1>Sign In</h1>
-                            <button><i><img src={images.AppleLogo()} alt=""/></i><span>Sign in with apple</span></button>
-                            <button><i><img src={images.FacebookLogo()} alt=""/></i><span>Sign in with facebook</span></button>
+                            <GoogleLogin
+                            clientId="812366072998-glbk0a20todjhpnbd2c1mu1ct6it9mba.apps.googleusercontent.com"
+                            onSuccess={onLoginSuccess}
+                            onFailure={onLoginFailure}
+                            buttonText="Login with Google"
+                            cookiePolicy={'single_host_origin'}
+                            className="lgoogle"
+                            />
+                            <FacebookLogin
+                             appId="359602275625375"
+                             fields="name,email,picture"
+                             callback={componentClicked}
+                             icon={<FacebookIcon/>}
+                             cssClass="lfb"
+                            />
+                            {/* <button><i><img src={images.AppleLogo()} alt=""/></i><span>Sign in with apple</span></button> */}
+                            {/* <button><i><img src={images.FacebookLogo()} alt=""/></i><span>Sign in with facebook</span></button> */}
                             
                             <section className="separator">
                                 <hr/>

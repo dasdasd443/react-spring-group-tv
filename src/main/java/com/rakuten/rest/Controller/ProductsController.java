@@ -29,6 +29,7 @@ import java.util.UUID;
 @Controller
 @RestController
 @RequestMapping(path="/product")
+@CrossOrigin(origins="http://localhost:3000", allowedHeaders = "*")
 public class ProductsController {
 
     private final ProductsService productsService;
@@ -38,6 +39,16 @@ public class ProductsController {
     public ProductsController(ProductsService productsService, ImageStore imageStore) {
         this.productsService = productsService;
         this.imageStore = imageStore;
+    }
+
+    @GetMapping(value="/all")
+    public List<Products> getAllProducts(){
+        return productsService.getProducts();
+    }
+
+    @GetMapping(value="/get-product/{product_id}")
+    public Optional<Products> getProduct(@PathVariable("product_id") Long product_id){
+        return productsService.getProduct(product_id);
     }
 
     @PostMapping(value="/save")
@@ -68,15 +79,8 @@ public class ProductsController {
             metadata.put("Content-Type", image.getContentType());
             metadata.put("Content-Length", String.valueOf(image.getSize()));
 
-            String path = String.format("%s/%s", Buckets.PROFILE_IMAGE.getBucket(), product_name);
             String filename = String.format("%s-%s", image.getName(), UUID.randomUUID());
             
-            try{
-                imageStore.save(path, filename, Optional.of(metadata),image.getInputStream());
-            }catch (IOException e){
-                throw new IllegalStateException(e);
-            }
-
             Products newProduct = new Products(
                 product_name,
                 brand,
@@ -91,13 +95,23 @@ public class ProductsController {
                 created_date,
                 seller_id
             );
-        productsService.saveProduct(newProduct);
+
+            try{
+                Products storedProduct = productsService.saveProduct(newProduct);
+                String path = String.format("%s/%s", Buckets.PROFILE_IMAGE.getBucket(), storedProduct.getProduct_id());
+                imageStore.save(path, filename, Optional.of(metadata),image.getInputStream());
+            }catch (IOException e){
+                throw new IllegalStateException(e);
+            }
+
+            
+        
     }
 
-    @DeleteMapping("/delete")
-    public void deleteProduct(@RequestBody Products product){
+    @DeleteMapping("/delete/{product_id}")
+    public void deleteProduct(@PathVariable("product_id") Long id){
 
-        productsService.deleteProduct(product.getProduct_id());
+        productsService.deleteProduct(id);
     }
 
     @PutMapping("/update")
@@ -110,8 +124,8 @@ public class ProductsController {
         return productsService.getSellerProducts(id);
     }
 
-    @GetMapping("/get-image/{product_name}/{filename}")
-    public byte[] getImage(@PathVariable("product_name") String product_name, @PathVariable("filename") String filename){
+    @GetMapping("/get-image/{product_id}/{filename}")
+    public byte[] getImage(@PathVariable("product_id") String product_name, @PathVariable("filename") String filename){
         return productsService.getImage(product_name,filename);
     }
 }

@@ -9,6 +9,7 @@ import './sell-products.css';
 import { withStyles } from "@material-ui/styles";
 import { useDispatch } from "react-redux";
 import { RetrieveProducts } from "../../../../../store/action/seller-products-action";
+import ViewTemplate from "../../components/view-template";
 
 const root = makeStyles({
     header:{
@@ -49,6 +50,8 @@ const SellProducts = () => {
     const [imageInput, setImageInput] = useState(0);
 
     const [selectedCategory, setSelectedCategory] = useState(0);
+
+    const [sold,setSold] = useState(false);
 
     const SubmitProduct = useCallback(async function SubmitProduct(){
         let product_name = document.querySelector("#product-name").value;
@@ -102,22 +105,18 @@ const SellProducts = () => {
                 // })
             }).then(res => console.log(res.text()))
         }
+
+        setSold(true);
     })
     
     return (
         <section>
-            {(user === false)? <Redirect to="/login"/>:null}
-            <div className="content-header">
-                <div><span>RAKU</span><span style={{color: "#FD2E2E"}}>TECH</span><span> {(user.role==='SLR')?"SELLER":(user.role==='ADM')?"ADMIN":"USER"}</span></div>
-                <div className="content-header__icons">
-                    <div><FontAwesomeIcon icon={faSearch}/></div>
-                    <div><FontAwesomeIcon icon={faBell}/></div>
-                    <div><FontAwesomeIcon icon={faUser}/></div>
-                </div>
-            </div>
-            <div className="content-container">
-                <UserMenu user={user} active="sell"/> 
+            {(sold)? <Redirect to="/user/products" push/>: null}
+            <ViewTemplate
+            active="sell"
+            content={
                 <Card className={styles.header}>
+                    {(user.role!=="ADM" && user.role!=="SLR")? <Redirect to="/user/user"/>:null}
                     <CardHeader title={
                         <div style={{display:'flex', flexDirection:'column', gap:'1rem'}}>
                             <div style={{display:'flex',justifyContent:'space-between'}}>
@@ -198,7 +197,8 @@ const SellProducts = () => {
                         </form>
                     </CardContent>
                 </Card>
-            </div>
+            }
+            />
         </section>
     )
 }
